@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="ru.awawa.weatherapp.ui.CurrentWeatherViewModel" />
+    </data>
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:text="@{viewModel.cityName}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:text='@{"Latitude: " + Float.toString(viewModel.coordinate.latitude) + " Longitude: " + Float.toString(viewModel.coordinate.longitude)}' />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:text='@{String.format("Temperature: %.2f°C", viewModel.mainData.temperature - 273)}'/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:text='@{String.format("Min temperature: %.2f°C Max temperature: %.2f°C", viewModel.mainData.minTemperature - 273, viewModel.mainData.maxTemperature - 273)}'/>
+
+        <Button
+            android:id="@+id/btSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_city"/>
+
+    </LinearLayout>
+</layout>
