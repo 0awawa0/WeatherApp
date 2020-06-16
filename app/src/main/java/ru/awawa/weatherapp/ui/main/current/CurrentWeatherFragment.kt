@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.FragmentMainLayoutBinding
-import ru.awawa.weatherapp.ui.search.SearchActivity
 import ru.awawa.weatherapp.utils.CONSTANT_CITY_ID
 
 
@@ -38,12 +37,6 @@ class CurrentWeather: Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = currentWeatherViewModel
-        binding.buttonClickListener = View.OnClickListener {
-            startActivityForResult(
-                Intent(requireContext(), SearchActivity::class.java),
-                SEARCH_CITY_REQUEST
-            )
-        }
         return binding.root
     }
 

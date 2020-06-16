@@ -1,14 +1,11 @@
 package ru.awawa.weatherapp
 
 import android.app.Application
-import android.util.Log
-import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import ru.awawa.weatherapp.koin.applicationModule
 import ru.awawa.weatherapp.koin.viewModelModule
-import ru.awawa.weatherapp.persistence.Database
 
 
 class Application: Application() {

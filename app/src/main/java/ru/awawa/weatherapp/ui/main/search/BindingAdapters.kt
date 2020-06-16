@@ -1,9 +1,9 @@
-package ru.awawa.weatherapp.ui.search
+package ru.awawa.weatherapp.ui.main.search
 
 import android.widget.ListView
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
-import ru.awawa.weatherapp.persistence.City
+import ru.awawa.weatherapp.repo.persistence.City
 
 @BindingAdapter("cities")
 fun setCities(listView: ListView, cities: List<City>?) {

@@ -1,4 +1,4 @@
-package ru.awawa.weatherapp.persistence
+package ru.awawa.weatherapp.repo.persistence
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

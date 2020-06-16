@@ -1,4 +1,4 @@
-package ru.awawa.weatherapp.persistence
+package ru.awawa.weatherapp.repo.persistence
 
 import androidx.room.Dao
 import androidx.room.Delete

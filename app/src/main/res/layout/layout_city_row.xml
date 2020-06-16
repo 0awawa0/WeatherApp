@@ -3,7 +3,7 @@
     <data>
         <variable
             name="city"
-            type="ru.awawa.weatherapp.persistence.City" />
+            type="ru.awawa.weatherapp.repo.persistence.City" />
     </data>
     <TextView
         android:layout_width="match_parent"

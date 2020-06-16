@@ -6,8 +6,9 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import ru.awawa.weatherapp.persistence.DATABASE_NAME
-import ru.awawa.weatherapp.persistence.Database
+import ru.awawa.weatherapp.repo.CitiesRepo
+import ru.awawa.weatherapp.repo.persistence.DATABASE_NAME
+import ru.awawa.weatherapp.repo.persistence.Database
 import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.retrofit.apis.CurrentWeatherApi
 import ru.awawa.weatherapp.repo.retrofit.utils.BASE_URL
@@ -17,10 +18,15 @@ val applicationModule: Module = module {
     factory { provideCurrentWeatherApi(get()) }
     single { provideRetrofit() }
     single { provideDatabase(get()) }
-    single { provideRepository()}
+    single { provideWeatherRepo() }
+    single { provideCitiesRepo() }
 }
 
-fun provideRepository(): WeatherRepo {
+fun provideCitiesRepo(): CitiesRepo {
+    return CitiesRepo()
+}
+
+fun provideWeatherRepo(): WeatherRepo {
     return WeatherRepo()
 }
 

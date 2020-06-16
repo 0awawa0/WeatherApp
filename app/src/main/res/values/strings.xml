@@ -5,4 +5,5 @@
     <string name="search_hint">Enter city name</string>
 
     <string name="currentWeather">Current weather</string>
+    <string name="search">Search</string>
 </resources>

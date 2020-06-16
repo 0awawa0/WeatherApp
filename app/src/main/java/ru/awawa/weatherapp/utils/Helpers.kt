@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import org.koin.core.KoinComponent
-import ru.awawa.weatherapp.persistence.City
+import ru.awawa.weatherapp.repo.persistence.City
 import java.io.IOException
 import java.nio.charset.Charset
 

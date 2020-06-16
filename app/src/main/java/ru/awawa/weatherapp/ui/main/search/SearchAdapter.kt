@@ -1,4 +1,4 @@
-package ru.awawa.weatherapp.ui.search
+package ru.awawa.weatherapp.ui.main.search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.LayoutCityRowBinding
-import ru.awawa.weatherapp.persistence.City
+import ru.awawa.weatherapp.repo.persistence.City
 
 
 class SearchAdapter(private var dataList: List<City>,

@@ -53,12 +53,5 @@
             android:textColor="@android:color/black"
             android:text='@{String.format("Min temperature: %.2f°C Max temperature: %.2f°C", viewModel.currentWeather.mainData.minTemperature - 273, viewModel.currentWeather.mainData.maxTemperature - 273)}'/>
 
-        <Button
-            android:id="@+id/btSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search_city"
-            app:clickListener="@{buttonClickListener}"/>
-
     </LinearLayout>
 </layout>

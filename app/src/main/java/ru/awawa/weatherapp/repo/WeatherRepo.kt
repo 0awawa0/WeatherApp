@@ -7,9 +7,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import ru.awawa.weatherapp.Application
 import ru.awawa.weatherapp.repo.retrofit.apis.CurrentWeatherApi
 import ru.awawa.weatherapp.repo.retrofit.models.CurrentWeatherModel
+import ru.awawa.weatherapp.repo.retrofit.utils.API_KEY
 
 
 class WeatherRepo: KoinComponent {
@@ -27,7 +27,7 @@ class WeatherRepo: KoinComponent {
         cityId.value = 0
     }
 
-    fun updateCurrentWeather(cityId: Long) {
+    private fun updateCurrentWeather(cityId: Long) {
         GlobalScope.launch (Dispatchers.IO) {
             val response = currentWeatherApi.getCurrentWeatherById(
                 cityId,
