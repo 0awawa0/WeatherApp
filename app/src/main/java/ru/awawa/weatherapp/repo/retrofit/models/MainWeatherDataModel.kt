@@ -1,4 +1,4 @@
-package ru.awawa.weatherapp.retrofit.models
+package ru.awawa.weatherapp.repo.retrofit.models
 
 import com.squareup.moshi.Json
 

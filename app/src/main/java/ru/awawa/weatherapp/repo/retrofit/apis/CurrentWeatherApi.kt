@@ -1,10 +1,9 @@
-package ru.awawa.weatherapp.retrofit.apis
+package ru.awawa.weatherapp.repo.retrofit.apis
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.awawa.weatherapp.retrofit.models.CurrentWeatherModel
+import ru.awawa.weatherapp.repo.retrofit.models.CurrentWeatherModel
 
 interface CurrentWeatherApi {
 

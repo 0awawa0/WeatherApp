@@ -15,7 +15,6 @@ class Application: Application() {
 
     companion object {
         const val TAG = "Application"
-        const val API_KEY  = "b779ad89c8c6c8cd73544c931a4ace23"
     }
 
     override fun onCreate() {

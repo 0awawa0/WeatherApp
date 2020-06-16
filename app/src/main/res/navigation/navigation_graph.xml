@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/nav_currentWeather">
+
+    <fragment android:id="@+id/nav_currentWeather"
+        android:name="ru.awawa.weatherapp.ui.main.current.CurrentWeather"
+        tools:layout="@layout/fragment_main_layout"/>
+
+</navigation>

@@ -10,7 +10,6 @@ import ru.awawa.weatherapp.databinding.LayoutCityRowBinding
 import ru.awawa.weatherapp.persistence.City
 
 
-
 class SearchAdapter(private var dataList: List<City>,
                     private val itemClickListener: View.OnClickListener
 ): BaseAdapter() {
@@ -43,7 +42,5 @@ class SearchAdapter(private var dataList: List<City>,
 
     override fun getItemId(position: Int): Long { return 0L }
 
-    override fun getCount(): Int {
-        return dataList.size
-    }
+    override fun getCount(): Int { return dataList.size }
 }

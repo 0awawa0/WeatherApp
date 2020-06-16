@@ -1,49 +1,48 @@
 package ru.awawa.weatherapp.ui.main
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.navigation.NavigationView
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.ActivityMainBinding
-import ru.awawa.weatherapp.ui.search.SearchActivity
-import ru.awawa.weatherapp.utils.CONSTANT_CITY_ID
-import ru.awawa.weatherapp.utils.CONSTANT_CITY_NAME
+
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val SEARCH_CITY_REQUEST = 0x100
+    private val binding: ActivityMainBinding by lazy {
+        DataBindingUtil.setContentView(this, R.layout.activity_main) as ActivityMainBinding
     }
-    private val currentWeatherViewModel: CurrentWeatherViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_main
-        )
-
-        binding.viewModel = currentWeatherViewModel
         binding.lifecycleOwner = this
-        binding.buttonClickListener = View.OnClickListener {
-            startActivityForResult(
-            Intent(this, SearchActivity::class.java),
-            SEARCH_CITY_REQUEST)
-        }
 
-        currentWeatherViewModel.getCurrentWeatherByName("London")
+        setSupportActionBar(binding.root.findViewById(R.id.toolbar))
+        setupNavigationDrawer()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == SEARCH_CITY_REQUEST && resultCode == Activity.RESULT_OK) {
-            val cityId = data?.getLongExtra(CONSTANT_CITY_ID, -1)
-            if (cityId != null) { currentWeatherViewModel.getCurrentWeatherById(cityId) }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
+
+    private fun setupNavigationDrawer() {
+
+        val drawerLayout = binding.root.findViewById<DrawerLayout>(R.id.drawerLayout)
+        val navigationView = binding.root.findViewById<NavigationView>(R.id.navigationView)
+        val appBarConfiguration = AppBarConfiguration.Builder()
+            .setDrawerLayout(drawerLayout)
+            .build()
+
+        val navController = Navigation.findNavController(this, R.id.navHostFragment)
+        NavigationUI.setupActionBarWithNavController(
+            this,
+            navController,
+            appBarConfiguration
+        )
+
+        NavigationUI.setupWithNavController(navigationView, navController)
     }
 }

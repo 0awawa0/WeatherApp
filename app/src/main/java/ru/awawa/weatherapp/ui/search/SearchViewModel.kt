@@ -19,7 +19,6 @@ class SearchViewModel: ViewModel(), KoinComponent {
 
     fun doSearch(query: String) {
         GlobalScope.launch(Dispatchers.IO) {
-            val result = database.cityDao().findByName(query)
             launch(Dispatchers.Main) { _cities.value = database.cityDao().findByName(query) }
         }
     }

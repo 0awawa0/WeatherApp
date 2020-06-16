@@ -1,65 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-        <variable
-            name="viewModel"
-            type="ru.awawa.weatherapp.ui.main.CurrentWeatherViewModel" />
-        <variable
-            name="buttonClickListener"
-            type="android.view.View.OnClickListener" />
-    </data>
-    <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".ui.main.MainActivity">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:openDrawer="start">
 
-        <TextView
+        <include
+            layout="@layout/activity_main_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:text="@{viewModel.cityName}"/>
+            android:layout_height="match_parent"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:text='@{"Latitude: " + Float.toString(viewModel.coordinate.latitude) + " Longitude: " + Float.toString(viewModel.coordinate.longitude)}' />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:text='@{String.format("Temperature: %.2f°C", viewModel.mainData.temperature - 273)}'/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:text='@{String.format("Min temperature: %.2f°C Max temperature: %.2f°C", viewModel.mainData.minTemperature - 273, viewModel.mainData.maxTemperature - 273)}'/>
-
-        <Button
-            android:id="@+id/btSearch"
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search_city"
-            app:clickListener="@{buttonClickListener}"/>
-
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/drawer_header_layout"
+            app:menu="@menu/drawer_menu"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

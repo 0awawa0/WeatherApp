@@ -3,4 +3,6 @@
 
     <string name="search_city">Search city</string>
     <string name="search_hint">Enter city name</string>
+
+    <string name="currentWeather">Current weather</string>
 </resources>
