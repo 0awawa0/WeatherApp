@@ -1,25 +1,15 @@
 package ru.awawa.weatherapp.ui.search
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
-import android.widget.ListView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.LayoutCityRowBinding
 import ru.awawa.weatherapp.persistence.City
 
 
-@BindingAdapter("cities")
-fun setCities(listView: ListView, cities: List<City>?) {
-    if (cities == null) return
-    (listView.adapter as SearchAdapter).updateDataList(cities)
-}
 
 class SearchAdapter(private var dataList: List<City>,
                     private val itemClickListener: View.OnClickListener

@@ -1,4 +1,4 @@
-package ru.awawa.weatherapp.ui
+package ru.awawa.weatherapp.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -52,14 +52,34 @@ class CurrentWeatherViewModel: ViewModel(), KoinComponent {
             return "Max temperature: ${mainData.value!!.maxTemperature - 273}°C"
         }
 
-    fun getCurrentWeather(city: String) {
+    fun getCurrentWeatherByName(city: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val response = currentWeatherApi
-                .getCurrentWeather(city, Application.API_KEY)
+                .getCurrentWeatherByName(city, Application.API_KEY)
                 .execute()
             if (response.isSuccessful) {
                 val currentWeatherModel = response.body()
                 launch(Dispatchers.Main) {
+                    if (currentWeatherModel != null) {
+                        _cityName.value = currentWeatherModel.cityName
+                        _coordinate.value = currentWeatherModel.coordinates
+                        _mainData.value = currentWeatherModel.mainData
+                        _wind.value = currentWeatherModel.wind
+                    }
+                }
+            }
+        }
+    }
+
+    fun getCurrentWeatherById(cityId: Long) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val response = currentWeatherApi
+                .getCurrentWeatherById(cityId, Application.API_KEY)
+                .execute()
+
+            if (response.isSuccessful) {
+                val currentWeatherModel = response.body()
+                launch (Dispatchers.Main) {
                     if (currentWeatherModel != null) {
                         _cityName.value = currentWeatherModel.cityName
                         _coordinate.value = currentWeatherModel.coordinates

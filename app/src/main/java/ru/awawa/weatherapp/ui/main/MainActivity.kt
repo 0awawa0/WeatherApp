@@ -1,15 +1,17 @@
-package ru.awawa.weatherapp.ui
+package ru.awawa.weatherapp.ui.main
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.ActivityMainBinding
 import ru.awawa.weatherapp.ui.search.SearchActivity
+import ru.awawa.weatherapp.utils.CONSTANT_CITY_ID
+import ru.awawa.weatherapp.utils.CONSTANT_CITY_NAME
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,22 +30,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewModel = currentWeatherViewModel
         binding.lifecycleOwner = this
-
-        binding.root.findViewById<Button>(R.id.btSearch).setOnClickListener {
+        binding.buttonClickListener = View.OnClickListener {
             startActivityForResult(
-                Intent(this, SearchActivity::class.java),
-                SEARCH_CITY_REQUEST
-            )
+            Intent(this, SearchActivity::class.java),
+            SEARCH_CITY_REQUEST)
         }
 
-        currentWeatherViewModel.getCurrentWeather("London")
+        currentWeatherViewModel.getCurrentWeatherByName("London")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == SEARCH_CITY_REQUEST && resultCode == Activity.RESULT_OK) {
-            if (data != null) {
-                currentWeatherViewModel.getCurrentWeather(data.getStringExtra("CITY_NAME"))
-            }
+            val cityId = data?.getLongExtra(CONSTANT_CITY_ID, -1)
+            if (cityId != null) { currentWeatherViewModel.getCurrentWeatherById(cityId) }
         }
         super.onActivityResult(requestCode, resultCode, data)
     }

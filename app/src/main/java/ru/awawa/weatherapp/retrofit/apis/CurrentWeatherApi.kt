@@ -9,7 +9,12 @@ import ru.awawa.weatherapp.retrofit.models.CurrentWeatherModel
 interface CurrentWeatherApi {
 
     @GET("weather")
-    fun getCurrentWeather(
+    fun getCurrentWeatherByName(
         @Query("q") cityName: String,
+        @Query("appid") apiKey: String): Call<CurrentWeatherModel>
+
+    @GET("weather")
+    fun getCurrentWeatherById(
+        @Query("id") cityId: Long,
         @Query("appid") apiKey: String): Call<CurrentWeatherModel>
 }
