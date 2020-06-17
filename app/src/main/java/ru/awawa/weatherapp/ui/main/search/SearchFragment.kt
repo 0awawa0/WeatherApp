@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.FragmentSearchLayoutBinding
 import ru.awawa.weatherapp.databinding.LayoutCityRowBinding
+import ru.awawa.weatherapp.ui.main.MainActivity
 
 
 class SearchFragment: Fragment() {
@@ -23,9 +24,13 @@ class SearchFragment: Fragment() {
         SearchAdapter(
             emptyList(),
             View.OnClickListener {
-                val cityId = DataBindingUtil.bind<LayoutCityRowBinding>(it)?.city?.id
-                if (cityId != null) { searchViewModel.updateCity(cityId) }
-                Navigation.findNavController(binding.root).navigate(R.id.nav_currentWeather)
+                if (activity != null) {
+                    val city = DataBindingUtil.bind<LayoutCityRowBinding>(it)?.city
+                    if (city != null) {
+                        searchViewModel.weatherRepo.city.value = city
+                        Navigation.findNavController(binding.root).navigate(R.id.nav_currentWeather)
+                    }
+                }
             })
     }
 

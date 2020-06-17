@@ -13,8 +13,11 @@ class CitiesRepo: KoinComponent {
 
     private val database: Database by inject()
 
-
     fun getCities(name: String): List<City>? {
         return database.cityDao().findByName(name)
+    }
+
+    fun getCity(id: Long): City? {
+        return database.cityDao().findById(id)
     }
 }

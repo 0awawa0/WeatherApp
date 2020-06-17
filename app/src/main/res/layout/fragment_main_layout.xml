@@ -20,7 +20,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:visibility="@{viewModel.currentWeather}"
+            app:visibility="@{viewModel.weatherRepo.oneCallModel}"
             android:layout_centerInParent="true"/>
 
         <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical"
-            app:visibility="@{viewModel.currentWeather}"
+            app:visibility="@{viewModel.weatherRepo.oneCallModel}"
             android:gravity="center">
 
             <TextView
@@ -38,7 +38,7 @@
                 android:padding="5dp"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:text="@{viewModel.currentWeather.cityName}"/>
+                android:text="@{viewModel.weatherRepo.city.name}"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:padding="5dp"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:text='@{"Latitude: " + Float.toString(viewModel.currentWeather.coordinates.latitude) + " Longitude: " + Float.toString(viewModel.currentWeather.coordinates.longitude)}' />
+                android:text='@{"Latitude: " + Float.toString(viewModel.weatherRepo.city.lat) + " Longitude: " + Float.toString(viewModel.weatherRepo.city.lon)}' />
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:padding="5dp"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:text='@{String.format("Temperature: %.2f°C", viewModel.currentWeather.mainData.temperature - 273)}'/>
+                android:text='@{String.format("Temperature: %.2f°C", viewModel.weatherRepo.oneCallModel.current.temperature - 273)}'/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
-                android:text='@{String.format("Min temperature: %.2f°C Max temperature: %.2f°C", viewModel.currentWeather.mainData.minTemperature - 273, viewModel.currentWeather.mainData.maxTemperature - 273)}'/>
+                android:text='@{String.format("Feels like: %.2f°C", viewModel.weatherRepo.oneCallModel.current.feelsLike - 273)}'/>
 
         </LinearLayout>
     </RelativeLayout>

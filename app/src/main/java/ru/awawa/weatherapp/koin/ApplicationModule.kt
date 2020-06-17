@@ -12,12 +12,12 @@ import ru.awawa.weatherapp.repo.persistence.DATABASE_NAME
 import ru.awawa.weatherapp.repo.persistence.Database
 import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.preferences.Preferences
-import ru.awawa.weatherapp.repo.retrofit.apis.CurrentWeatherApi
+import ru.awawa.weatherapp.repo.retrofit.apis.OneCallApi
 import ru.awawa.weatherapp.repo.retrofit.utils.BASE_URL
 
 
 val applicationModule: Module = module {
-    factory { provideCurrentWeatherApi(get()) }
+    factory { provideOneCallApi(get())}
     single { provideRetrofit() }
     single { provideDatabase(get()) }
     single { provideWeatherRepo() }
@@ -38,8 +38,8 @@ fun provideRetrofit(): Retrofit {
         .build()
 }
 
-fun provideCurrentWeatherApi(retrofit: Retrofit): CurrentWeatherApi {
-    return retrofit.create(CurrentWeatherApi::class.java)
+fun provideOneCallApi(retrofit: Retrofit): OneCallApi {
+    return retrofit.create(OneCallApi::class.java)
 }
 
 fun provideDatabase(context: Context): Database {

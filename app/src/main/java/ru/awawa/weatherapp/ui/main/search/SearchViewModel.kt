@@ -11,12 +11,11 @@ import org.koin.core.inject
 import ru.awawa.weatherapp.repo.CitiesRepo
 import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.persistence.City
-import ru.awawa.weatherapp.repo.persistence.Database
 
 class SearchViewModel: ViewModel(), KoinComponent {
 
     private val citiesRepo: CitiesRepo by inject()
-    private val weatherRepo: WeatherRepo by inject()
+    val weatherRepo: WeatherRepo by inject()
 
     private val _cities = MutableLiveData<List<City>>()
     val cities: LiveData<List<City>> = _cities
@@ -26,6 +25,4 @@ class SearchViewModel: ViewModel(), KoinComponent {
             launch(Dispatchers.Main) { _cities.value =  citiesRepo.getCities(query) }
         }
     }
-
-    fun updateCity(cityId: Long) { weatherRepo.cityId.value = cityId }
 }
