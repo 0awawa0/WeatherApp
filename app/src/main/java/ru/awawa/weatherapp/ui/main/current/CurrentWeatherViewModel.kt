@@ -12,6 +12,4 @@ class CurrentWeatherViewModel: ViewModel(), KoinComponent {
     private val weatherRepo: WeatherRepo by inject()
 
     val currentWeather: LiveData<CurrentWeatherModel> = weatherRepo.currentWeatherModel
-
-    fun updateWeather(cityId: Long) { weatherRepo.cityId.value = cityId }
 }
