@@ -7,6 +7,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import ru.awawa.weatherapp.repo.preferences.Preferences
 import ru.awawa.weatherapp.repo.retrofit.apis.CurrentWeatherApi
 import ru.awawa.weatherapp.repo.retrofit.models.CurrentWeatherModel
 import ru.awawa.weatherapp.repo.retrofit.utils.API_KEY
@@ -15,6 +16,7 @@ import ru.awawa.weatherapp.repo.retrofit.utils.API_KEY
 class WeatherRepo: KoinComponent {
 
     private val currentWeatherApi: CurrentWeatherApi by inject()
+    private val preferences: Preferences by inject()
 
     private val _currentWeatherModel: MutableLiveData<CurrentWeatherModel> = MutableLiveData()
     val currentWeatherModel: LiveData<CurrentWeatherModel> = _currentWeatherModel
@@ -23,8 +25,9 @@ class WeatherRepo: KoinComponent {
     init {
         cityId.observeForever {
             updateCurrentWeather(it)
+            preferences.currentCity = it
         }
-        cityId.value = 0
+        cityId.value = preferences.currentCity
     }
 
     private fun updateCurrentWeather(cityId: Long) {
