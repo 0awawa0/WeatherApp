@@ -40,6 +40,11 @@
                 android:textColor="@android:color/black"
                 android:text="@{viewModel.weatherRepo.city.name}"/>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:url='@{String.format("http://openweathermap.org/img/wn/%s@2x.png",viewModel.weatherRepo.oneCallModel.current.weather[0].icon)}'/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
