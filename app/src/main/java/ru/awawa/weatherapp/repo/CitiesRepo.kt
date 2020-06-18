@@ -1,8 +1,5 @@
 package ru.awawa.weatherapp.repo
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ru.awawa.weatherapp.repo.persistence.City

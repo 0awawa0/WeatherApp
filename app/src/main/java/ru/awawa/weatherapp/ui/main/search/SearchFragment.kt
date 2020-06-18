@@ -13,7 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.FragmentSearchLayoutBinding
 import ru.awawa.weatherapp.databinding.LayoutCityRowBinding
-import ru.awawa.weatherapp.ui.main.MainActivity
 
 
 class SearchFragment: Fragment() {
