@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor">
+        android:background="@drawable/background">
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                         android:textSize="18sp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/textColor"
                         android:text="@{viewModel.weatherRepo.city.name}"/>
 
                     <ImageView
@@ -66,7 +66,7 @@
                         android:textAlignment="center"
                         android:padding="5dp"
                         android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/textColor"
                         android:layout_below="@id/tvCityName"
                         android:layout_centerHorizontal="true"
                         android:text='@{"Latitude: " + Float.toString(viewModel.weatherRepo.city.lat) + " Longitude: " + Float.toString(viewModel.weatherRepo.city.lon)}' />
@@ -78,7 +78,7 @@
                         android:textAlignment="center"
                         android:padding="5dp"
                         android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/textColor"
                         android:layout_below="@id/tvCoordinates"
                         android:layout_centerHorizontal="true"
                         android:text='@{String.format("Temperature: %.2f°C", viewModel.weatherRepo.oneCallModel.current.temperature - 273)}'/>
@@ -90,7 +90,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/textColor"
                         android:layout_below="@id/tvTemperature"
                         android:layout_centerHorizontal="true"
                         android:text='@{String.format("Feels like: %.2f°C", viewModel.weatherRepo.oneCallModel.current.feelsLike - 273)}'/>

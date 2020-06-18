@@ -5,5 +5,9 @@
     <color name="colorAccent">#075eb5</color>
 
     <color name="toolbarTitleColor">#f2f2f2</color>
-    <color name="backgroundColor">#c7e1eb</color>
+    <color name="backgroundColor">#ffffff</color>
+
+    <color name="gradientStartColor">#3eb8de</color>
+    <color name="gradientEndColor">#dceff5</color>
+    <color name="textColor">#475459</color>
 </resources>

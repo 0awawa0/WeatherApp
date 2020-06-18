@@ -8,5 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:padding="10dp"
+        android:textColor="@color/textColor"
         android:text='@{city.name + ", " + city.country}'/>
 </layout>

@@ -7,9 +7,11 @@
 
     <fragment android:id="@+id/nav_currentWeather"
         android:name="ru.awawa.weatherapp.ui.main.current.CurrentWeather"
+        android:label="@string/currentWeather"
         tools:layout="@layout/fragment_main_layout"/>
 
     <fragment android:id="@+id/nav_search"
         android:name="ru.awawa.weatherapp.ui.main.search.SearchFragment"
+        android:label="@string/search"
         tools:layout="@layout/fragment_search_layout"/>
 </navigation>
