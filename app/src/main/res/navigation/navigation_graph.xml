@@ -14,4 +14,10 @@
         android:name="ru.awawa.weatherapp.ui.main.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search_layout"/>
+
+    <fragment android:id="@+id/nav_two_days"
+        android:name="ru.awawa.weatherapp.ui.main.hourly.TwoDaysWeatherFragment"
+        android:label="@string/twoDaysWeather"
+        tools:layout="@layout/fragment_two_days_layout"/>
+
 </navigation>

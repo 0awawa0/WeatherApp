@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         val navigationView = binding.root.findViewById<NavigationView>(R.id.navigationView)
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.nav_currentWeather,
+            R.id.nav_two_days,
             R.id.nav_search
         )
             .setDrawerLayout(drawerLayout)
