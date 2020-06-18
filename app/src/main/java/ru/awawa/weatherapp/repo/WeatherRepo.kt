@@ -39,6 +39,12 @@ class WeatherRepo: KoinComponent {
         }
     }
 
+    fun updateData() {
+        if (city.value != null) {
+            updateOneCallModel((city.value as City).lat, (city.value as City).lon)
+        }
+    }
+
     private fun updateOneCallModel(latitude: Float, longitude: Float) {
         GlobalScope.launch (Dispatchers.IO) {
             val call = oneCallApi.getForecast(latitude, longitude, API_KEY)
