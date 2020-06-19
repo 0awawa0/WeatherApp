@@ -30,6 +30,7 @@ class TwoDaysWeatherFragment: Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = twoDaysWeatherViewModel
+        binding.adapter = TwoDaysWeatherAdapter()
         return binding.root
     }
 }

@@ -6,6 +6,9 @@
         <variable
             name="viewModel"
             type="ru.awawa.weatherapp.ui.main.hourly.TwoDaysWeatherViewModel" />
+        <variable
+            name="adapter"
+            type="ru.awawa.weatherapp.ui.main.hourly.TwoDaysWeatherAdapter" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +28,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:adapter="@{adapter}"
+                app:data="@{viewModel.weatherRepo.oneCallModel.hourly}">
             </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
