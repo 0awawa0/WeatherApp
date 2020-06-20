@@ -4,6 +4,14 @@
     <string name="search_city">Search city</string>
     <string name="search_hint">Enter city name</string>
 
+    <string name="temperature">Temperature, °C</string>
+    <string name="feelsLike">Feels like, °C</string>
+    <string name="humidity">Humidity, %</string>
+    <string name="pressure">Pressure, hPa</string>
+    <string name="dewPoint">Dew point, °C</string>
+    <string name="clouds">Clouds, %</string>
+    <string name="visibility">Visibility, m</string>
+
     <string name="currentWeather">Current weather</string>
     <string name="twoDaysWeather">Two days forecast</string>
     <string name="search">Search</string>

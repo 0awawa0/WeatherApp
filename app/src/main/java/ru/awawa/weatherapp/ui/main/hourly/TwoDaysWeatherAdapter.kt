@@ -40,8 +40,15 @@ class TwoDaysWeatherAdapter: RecyclerView.Adapter<TwoDaysWeatherAdapter.HourlyVi
             val data = (this.data as Array<HourlyModel>)[position]
             val binding = (holder.view.tag as LayoutHourlyRowBinding)
             binding.time = timeFormatter.format(data.time * 1000)
-            binding.temperature = String.format("%.2f°C", data.temperature - 273)
+            binding.temperature = String.format("%.2f", data.temperature - 273)
             binding.image = data.weather[0].icon
+            binding.feelsLike = String.format("%.2f", data.feelsLike - 273)
+            binding.humidity = data.humidity.toString()
+            binding.pressure = data.pressure.toString()
+            binding.dewPoint = String.format("%.2f", data.dewPoint - 273)
+            binding.pressure = data.pressure.toString()
+            binding.clouds = data.clouds.toString()
+            binding.visibility = data.visibility.toString()
         }
     }
 

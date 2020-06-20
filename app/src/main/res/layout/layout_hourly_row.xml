@@ -11,41 +11,244 @@
         <variable
             name="image"
             type="String" />
+        <variable
+            name="feelsLike"
+            type="String" />
+        <variable
+            name="humidity"
+            type="String" />
+        <variable
+            name="pressure"
+            type="String" />
+        <variable
+            name="dewPoint"
+            type="String" />
+        <variable
+            name="clouds"
+            type="String" />
+        <variable
+            name="visibility"
+            type="String" />
     </data>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tvTime"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColor"
-            android:textSize="16sp"
-            android:paddingHorizontal="5dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:text='@{time}'/>
+            android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/imgIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/tvTime"
-            android:paddingHorizontal="5dp"
-            android:layout_centerVertical="true"
-            app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:paddingHorizontal="5dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text='@{time}'/>
 
-        <TextView
-            android:id="@+id/tvTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColor"
-            android:layout_centerVertical="true"
-            android:textSize="16sp"
-            android:layout_toEndOf="@id/imgIcon"
-            android:paddingHorizontal="5dp"
-            android:text='@{temperature}'/>
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tvTime"
+                android:paddingHorizontal="5dp"
+                android:layout_centerVertical="true"
+                app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
 
-    </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/llTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_toEndOf="@id/imgIcon"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperature"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text='@{temperature}'/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFeelsLike"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="5dp"
+                android:gravity="center"
+                android:layout_toEndOf="@id/llTemperature"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feelsLike"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{feelsLike}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llFeelsLike"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humidity"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{humidity}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llHumidity"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pressure"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{pressure}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDewPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llPressure"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dewPoint"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{dewPoint}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llClouds"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llDewPoint"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clouds"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{clouds}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llVisibility"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llClouds"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/visibility"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@{visibility}"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </HorizontalScrollView>
 </layout>
