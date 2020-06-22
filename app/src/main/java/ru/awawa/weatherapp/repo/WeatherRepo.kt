@@ -48,6 +48,7 @@ class WeatherRepo: KoinComponent {
     private fun updateOneCallModel(latitude: Float, longitude: Float) {
         GlobalScope.launch (Dispatchers.IO) {
             val call = oneCallApi.getForecast(latitude, longitude, API_KEY)
+            Log.d("WeatherRepo", "${call.request().url().url()}")
             val response = call.execute()
 
             if (response.isSuccessful) {

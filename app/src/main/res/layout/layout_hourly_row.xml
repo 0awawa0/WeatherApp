@@ -27,7 +27,10 @@
             name="clouds"
             type="String" />
         <variable
-            name="visibility"
+            name="windSpeed"
+            type="String" />
+        <variable
+            name="windDirection"
             type="String" />
     </data>
     <HorizontalScrollView
@@ -223,19 +226,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llVisibility"
+                android:id="@+id/llWindSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:paddingHorizontal="5dp"
-                android:layout_toEndOf="@id/llClouds"
+                android:layout_toEndOf="@+id/llClouds"
                 android:layout_centerVertical="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/visibility"
+                    android:text="@string/windSpeed"
                     android:textColor="@color/textColor"
                     android:textAlignment="center"
                     android:textSize="12sp"/>
@@ -244,9 +247,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:textAlignment="center"
                     android:textSize="16sp"
-                    android:text="@{visibility}"/>
+                    android:text="@{windSpeed}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llWindDirection"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:layout_toEndOf="@id/llWindSpeed"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/windDirection"
+                    android:textColor="@color/textColor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:text="@{windDirection}"/>
             </LinearLayout>
 
         </RelativeLayout>

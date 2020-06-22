@@ -7,11 +7,23 @@ import org.koin.core.KoinComponent
 import ru.awawa.weatherapp.repo.persistence.City
 import java.io.IOException
 import java.nio.charset.Charset
+import kotlin.math.abs
 
 
 object Helpers: KoinComponent {
 
     const val TAG = "Helpers"
+
+    val DIRECTIONS = hashMapOf(
+        Pair("N", 0),
+        Pair("NE", 45),
+        Pair("E", 90),
+        Pair("SE", 135),
+        Pair("S", 180),
+        Pair("SW", 225),
+        Pair("W", 270),
+        Pair("NW", 315)
+    )
 
     fun getCitiesFromJSON(): List<City>? {
 
@@ -32,5 +44,18 @@ object Helpers: KoinComponent {
         }
 
         return null
+    }
+
+    fun degreesToDirection(degrees: Float): String {
+        var currDirection = "N"
+        var minDiff = 361f
+        for (direction in DIRECTIONS.keys) {
+            if (abs(degrees - DIRECTIONS[direction]!!) < minDiff) {
+                currDirection = direction
+                minDiff = abs(degrees - DIRECTIONS[direction]!!)
+                if (minDiff == 0f) return currDirection
+            }
+        }
+        return currDirection
     }
 }
