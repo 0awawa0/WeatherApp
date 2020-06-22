@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="time"
+            type="String" />
+        <variable
+            name="image"
+            type="String" />
+        <variable
+            name="sunrise"
+            type="String" />
+        <variable
+            name="sunset"
+            type="String" />
+        <variable
+            name="temperatureMorning"
+            type="String" />
+        <variable
+            name="temperatureDay"
+            type="String" />
+        <variable
+            name="temperatureEvening"
+            type="String" />
+        <variable
+            name="temperatureNight"
+            type="String" />
+        <variable
+            name="temperatureMin"
+            type="String"/>
+        <variable
+            name="temperatureMax"
+            type="String" />
+        <variable
+            name="feelsLikeMorning"
+            type="String" />
+        <variable
+            name="feelsLikeDay"
+            type="String"/>
+        <variable
+            name="feelsLikeEvening"
+            type="String" />
+        <variable
+            name="feelsLikeNight"
+            type="String" />
+        <variable
+            name="pressure"
+            type="String" />
+        <variable
+            name="humidity"
+            type="String" />
+        <variable
+            name="dewPoint"
+            type="String" />
+        <variable
+            name="windSpeed"
+            type="String" />
+        <variable
+            name="windGust"
+            type="String" />
+        <variable
+            name="windDirection"
+            type="String" />
+        <variable
+            name="clouds"
+            type="String" />
+        <variable
+            name="uvi"
+            type="String" />
+        <variable
+            name="rain"
+            type="String"/>
+        <variable
+            name="snow"
+            type="String" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:paddingHorizontal="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@{time}"/>
+        
+        <HorizontalScrollView
+            android:id="@+id/hsvWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/tvTime"
+            android:scrollbars="none">
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                
+                <ImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:paddingHorizontal="5dp"
+                    android:layout_centerVertical="true"
+                    app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
+                
+                <LinearLayout
+                    android:id="@+id/llSunrise"
+                    style="@style/RowLinearLayout"
+                    android:layout_toEndOf="@id/imgIcon"
+                    android:paddingHorizontal="5dp">
+
+                    <TextView
+                        style="@style/RowTextViewTitle"
+                        android:text="@string/sunrise"/>
+
+                    <TextView
+                        style="@style/RowTextViewContent"
+                        android:text="@{sunrise}"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSunset"
+                    style="@style/RowLinearLayout"
+                    android:layout_toEndOf="@id/llSunrise"
+                    android:paddingHorizontal="5dp">
+
+                    <TextView
+                        style="@style/RowTextViewTitle"
+                        android:text="@string/sunset"/>
+
+                    <TextView
+                        style="@style/RowTextViewContent"
+                        android:text="@{sunset}"/>
+                </LinearLayout>
+                    
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+</layout>

@@ -28,9 +28,10 @@ class SevenDaysWeatherFragment: Fragment() {
             false
         )
 
+        binding.lifecycleOwner = this
         binding.viewModel = sevenDaysViewModel
         binding.adapter = SevenDaysWeatherAdapter()
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

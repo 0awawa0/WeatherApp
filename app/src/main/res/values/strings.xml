@@ -13,6 +13,8 @@
     <string name="windSpeed">Wind speed, m/s</string>
     <string name="windDirection">Wind direction</string>
     <string name="visibility">Visibility, m</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 
     <string name="currentWeather">Current weather</string>
     <string name="twoDaysWeather">Two days forecast</string>
