@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.nav_currentWeather,
             R.id.nav_two_days,
+            R.id.nav_seven_days,
             R.id.nav_search
         )
             .setDrawerLayout(drawerLayout)
