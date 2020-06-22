@@ -52,6 +52,7 @@ class TwoDaysWeatherAdapter: RecyclerView.Adapter<TwoDaysWeatherAdapter.HourlyVi
             binding.pressure = String.format("%.2f", data.pressure * 0.750062)
             binding.clouds = data.clouds.toString()
             binding.windSpeed = data.windSpeed.toString()
+            binding.windGust = data.windGust.toString()
             binding.windDirection = Helpers.degreesToDirection(data.windDirection)
         }
     }

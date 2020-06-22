@@ -11,6 +11,7 @@
     <string name="dewPoint">Dew point, °C</string>
     <string name="clouds">Clouds, %</string>
     <string name="windSpeed">Wind speed, m/s</string>
+    <string name="windGust">Wind gust, m/s</string>
     <string name="windDirection">Wind direction</string>
     <string name="visibility">Visibility, m</string>
     <string name="sunrise">Sunrise</string>

@@ -30,6 +30,9 @@
             name="windSpeed"
             type="String" />
         <variable
+            name="windGust"
+            type="String" />
+        <variable
             name="windDirection"
             type="String" />
     </data>
@@ -169,9 +172,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llWindDirection"
+                android:id="@+id/llWindGust"
                 style="@style/RowLinearLayout"
                 android:layout_toEndOf="@id/llWindSpeed"
+                android:paddingHorizontal="5dp">
+
+                <TextView
+                    style="@style/RowTextViewTitle"
+                    android:text="@string/windGust"/>
+
+                <TextView
+                    style="@style/RowTextViewContent"
+                    android:text="@{windGust}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llWindDirection"
+                style="@style/RowLinearLayout"
+                android:layout_toEndOf="@id/llWindGust"
                 android:paddingHorizontal="5dp">
 
                 <TextView

@@ -7,10 +7,10 @@
     <item android:id="@+id/nav_two_days"
         android:title="@string/twoDaysWeather"/>
 
-    <item android:id="@+id/nav_search"
-        android:title="@string/search"/>
-
     <item android:id="@+id/nav_seven_days"
         android:title="@string/sevenDaysWeather"/>
+
+    <item android:id="@+id/nav_search"
+        android:title="@string/search"/>
 
 </menu>
