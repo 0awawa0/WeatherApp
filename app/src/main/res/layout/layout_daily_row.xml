@@ -110,35 +110,48 @@
                     android:paddingHorizontal="5dp"
                     android:layout_centerVertical="true"
                     app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
+
+                <LinearLayout
+                    android:id="@+id/llFirstLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgIcon"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/llSunrise"
+                        style="@style/RowLinearLayout"
+                        android:paddingHorizontal="5dp">
+
+                        <TextView
+                            style="@style/RowTextViewTitle"
+                            android:text="@string/sunrise"/>
+
+                        <TextView
+                            style="@style/RowTextViewContent"
+                            android:text="@{sunrise}"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llSunset"
+                        style="@style/RowLinearLayout"
+                        android:paddingHorizontal="5dp">
+
+                        <TextView
+                            style="@style/RowTextViewTitle"
+                            android:text="@string/sunset"/>
+
+                        <TextView
+                            style="@style/RowTextViewContent"
+                            android:text="@{sunset}"/>
+                    </LinearLayout>
+                </LinearLayout>
                 
                 <LinearLayout
-                    android:id="@+id/llSunrise"
-                    style="@style/RowLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/imgIcon"
-                    android:paddingHorizontal="5dp">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/RowTextViewTitle"
-                        android:text="@string/sunrise"/>
-
-                    <TextView
-                        style="@style/RowTextViewContent"
-                        android:text="@{sunrise}"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llSunset"
-                    style="@style/RowLinearLayout"
-                    android:layout_toEndOf="@id/llSunrise"
-                    android:paddingHorizontal="5dp">
-
-                    <TextView
-                        style="@style/RowTextViewTitle"
-                        android:text="@string/sunset"/>
-
-                    <TextView
-                        style="@style/RowTextViewContent"
-                        android:text="@{sunset}"/>
                 </LinearLayout>
                     
             </RelativeLayout>
