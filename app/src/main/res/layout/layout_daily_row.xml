@@ -98,63 +98,67 @@
             android:layout_toEndOf="@id/tvTime"
             android:scrollbars="none">
             
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
                 <ImageView
                     android:id="@+id/imgIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
                     android:paddingHorizontal="5dp"
-                    android:layout_centerVertical="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:padding="5dp"
                     app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
 
-                <LinearLayout
-                    android:id="@+id/llFirstLine"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvSunriseTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/imgIcon"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:id="@+id/llSunrise"
-                        style="@style/RowLinearLayout"
-                        android:paddingHorizontal="5dp">
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    android:text="@string/sunrise"/>
 
-                        <TextView
-                            style="@style/RowTextViewTitle"
-                            android:text="@string/sunrise"/>
-
-                        <TextView
-                            style="@style/RowTextViewContent"
-                            android:text="@{sunrise}"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llSunset"
-                        style="@style/RowLinearLayout"
-                        android:paddingHorizontal="5dp">
-
-                        <TextView
-                            style="@style/RowTextViewTitle"
-                            android:text="@string/sunset"/>
-
-                        <TextView
-                            style="@style/RowTextViewContent"
-                            android:text="@{sunset}"/>
-                    </LinearLayout>
-                </LinearLayout>
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvSunriseData"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/imgIcon"
-                    android:orientation="horizontal">
+                    app:layout_constraintLeft_toLeftOf="@id/tvSunriseTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvSunriseTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvSunriseTitle"
+                    android:padding="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:text="@{sunrise}"/>
 
-                </LinearLayout>
-                    
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvSunsetTitle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/tvSunriseTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    android:text="@string/sunset"/>
+
+                <TextView
+                    android:id="@+id/tvSunsetData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/tvSunsetTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvSunsetTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvSunsetTitle"
+                    android:padding="5dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:text="@{sunset}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
     </RelativeLayout>
 </layout>

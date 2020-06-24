@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="none">
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp">
@@ -49,158 +49,233 @@
                 android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:textColor="@color/textColor"
                 android:textSize="16sp"
                 android:paddingHorizontal="5dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
                 android:text='@{time}'/>
 
             <ImageView
                 android:id="@+id/imgIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/tvTime"
-                android:paddingHorizontal="5dp"
-                android:layout_centerVertical="true"
+                app:layout_constraintLeft_toRightOf="@id/tvTime"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="5dp"
                 app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
 
-            <LinearLayout
-                android:id="@+id/llTemperature"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/imgIcon"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvTemperatureTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/temperature" />
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/temperature" />
+            <TextView
+                android:id="@+id/tvTemperatureData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvTemperatureTitle"
+                app:layout_constraintRight_toRightOf="@id/tvTemperatureTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text='@{temperature}'/>
 
-                <TextView
-                    android:id="@+id/tvTemperature"
-                    style="@style/RowTextViewContent"
-                    android:text='@{temperature}'/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvFeelsLikeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvTemperatureTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/feelsLike" />
 
-            <LinearLayout
-                android:id="@+id/llFeelsLike"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llTemperature"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvFeelsLikeData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeTitle"
+                app:layout_constraintRight_toRightOf="@id/tvFeelsLikeTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{feelsLike}"/>
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/feelsLike" />
+            <TextView
+                android:id="@+id/tvHumidityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvFeelsLikeTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/humidity" />
 
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{feelsLike}"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvHumidityData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvHumidityTitle"
+                app:layout_constraintRight_toRightOf="@id/tvHumidityTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvHumidityTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                style="@style/RowTextViewContent"
+                android:text="@{humidity}"/>
 
-            <LinearLayout
-                android:id="@+id/llHumidity"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llFeelsLike"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvPressureTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvHumidityTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/pressure" />
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/humidity" />
+            <TextView
+                android:id="@+id/tvPressureData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvPressureTitle"
+                app:layout_constraintRight_toRightOf="@id/tvPressureTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvPressureTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{pressure}"/>
 
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{humidity}"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvDewPointTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvPressureTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/dewPoint" />
 
-            <LinearLayout
-                android:id="@+id/llPressure"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llHumidity"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvDewPointData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvDewPointTitle"
+                app:layout_constraintRight_toRightOf="@id/tvDewPointTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvDewPointTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{dewPoint}"/>
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/pressure" />
+            <TextView
+                android:id="@+id/tvCloudsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvDewPointTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/clouds" />
 
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{pressure}"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvCloudsData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvCloudsTitle"
+                app:layout_constraintRight_toRightOf="@id/tvCloudsTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvCloudsTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{clouds}"/>
 
-            <LinearLayout
-                android:id="@+id/llDewPoint"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llPressure"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvWindSpeedTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvCloudsTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/windSpeed" />
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/dewPoint" />
+            <TextView
+                android:id="@+id/tvWindSpeedData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvWindSpeedTitle"
+                app:layout_constraintRight_toRightOf="@id/tvWindSpeedTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvWindSpeedTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{windSpeed}"/>
 
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{dewPoint}"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvWindGustTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvWindSpeedTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/windGust"/>
 
-            <LinearLayout
-                android:id="@+id/llClouds"
-                style="@style/RowLinearLayout"
-                android:paddingHorizontal="5dp"
-                android:layout_toEndOf="@id/llDewPoint">
+            <TextView
+                android:id="@+id/tvWindGustData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvWindGustTitle"
+                app:layout_constraintRight_toRightOf="@id/tvWindGustTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvWindGustTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{windGust}"/>
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/clouds" />
 
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{clouds}"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvWindDirectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/tvWindGustTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:text="@string/windDirection" />
 
-            <LinearLayout
-                android:id="@+id/llWindSpeed"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@+id/llClouds"
-                android:paddingHorizontal="5dp">
+            <TextView
+                android:id="@+id/tvWindDirectionData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tvWindDirectionTitle"
+                app:layout_constraintRight_toRightOf="@id/tvWindDirectionTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvWindDirectionTitle"
+                android:padding="5dp"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:text="@{windDirection}"/>
 
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/windSpeed" />
-
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{windSpeed}"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llWindGust"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llWindSpeed"
-                android:paddingHorizontal="5dp">
-
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/windGust"/>
-
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{windGust}"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llWindDirection"
-                style="@style/RowLinearLayout"
-                android:layout_toEndOf="@id/llWindGust"
-                android:paddingHorizontal="5dp">
-
-                <TextView
-                    style="@style/RowTextViewTitle"
-                    android:text="@string/windDirection" />
-
-                <TextView
-                    style="@style/RowTextViewContent"
-                    android:text="@{windDirection}"/>
-            </LinearLayout>
-
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
 </layout>
