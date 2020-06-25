@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 
 data class TemperatureModel(
-    @field:Json(name="mort") val morning: Float,
+    @field:Json(name="morn") val morning: Float,
     @field:Json(name="day") val day: Float,
     @field:Json(name="eve") val evening: Float,
     @field:Json(name="night") val night: Float,

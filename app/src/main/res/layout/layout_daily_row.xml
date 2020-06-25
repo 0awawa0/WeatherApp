@@ -83,12 +83,13 @@
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             android:paddingHorizontal="5dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:text="@{time}"/>
         
         <HorizontalScrollView
@@ -104,18 +105,19 @@
                 <ImageView
                     android:id="@+id/imgIcon"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingHorizontal="5dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:padding="5dp"
-                    app:image='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",image)}'/>
+                    app:image='@{String.format("https://openweathermap.org/img/wn/%s@4x.png",image)}'/>
 
                 <TextView
                     android:id="@+id/tvSunriseTitle"
-                    style="@style/WeatherInfoTextViewTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
                     app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintRight_toLeftOf="@id/tvSunsetTitle"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/sunrise"/>
 
@@ -129,8 +131,9 @@
 
                 <TextView
                     android:id="@+id/tvSunsetTitle"
-                    style="@style/WeatherInfoTextViewTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
                     app:layout_constraintLeft_toRightOf="@id/tvSunriseTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvTemperatureMinTitle"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/sunset"/>
 
@@ -141,6 +144,185 @@
                     app:layout_constraintRight_toRightOf="@id/tvSunsetTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvSunsetTitle"
                     android:text="@{sunset}"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureMinTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvSunsetTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvTemperatureMaxTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/temperatureMin"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureMinData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureMinTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureMinTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureMinTitle"
+                    android:text="@{temperatureMin}"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureMaxTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvTemperatureMinTitle"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/temperatureMax"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureMaxData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureMaxTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureMaxTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureMaxTitle"
+                    android:text="@{temperatureMax}"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    android:layout_width="0dp"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSunriseData"
+                    android:textAlignment="center"
+                    android:text="@string/temperature"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureMorningTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintRight_toLeftOf="@id/tvTemperatureDayTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                    android:text="@string/morning"/>
+                
+                <TextView
+                    android:id="@+id/tvTemperatureMorningData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureMorningTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureMorningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureMorningTitle"
+                    android:text="@{temperatureMorning}"/>
+                
+                <TextView
+                    android:id="@+id/tvTemperatureDayTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvTemperatureMorningTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvTemperatureEveningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                    android:text="@string/day"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureDayData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureDayTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureDayTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureDayTitle"
+                    android:text="@{temperatureDay}"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureEveningTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvTemperatureDayTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvTemperatureNightTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                    android:text="@string/evening"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureEveningData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureEveningTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureEveningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureEveningTitle"
+                    android:text="@{temperatureEvening}"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureNightTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvTemperatureEveningTitle"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                    android:text="@string/night"/>
+
+                <TextView
+                    android:id="@+id/tvTemperatureNightData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvTemperatureNightTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvTemperatureNightTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureNightTitle"
+                    android:text="@{temperatureNight}"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeTitle"
+                    style="@style/WeatherInfoTextViewTitle"
+                    android:layout_width="0dp"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTemperatureMorningData"
+                    android:text="@string/feelsLike"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeMorningTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvFeelsLikeDayTitle"
+                    android:text="@string/morning"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeMorningData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeMorningTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvFeelsLikeMorningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeMorningTitle"
+                    android:text="@{feelsLikeMorning}"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeDayTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvFeelsLikeMorningTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvFeelsLikeEveningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
+                    android:text="@string/day"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeDayData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeDayTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvFeelsLikeDayTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeDayTitle"
+                    android:text="@{feelsLikeDay}"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeEveningTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvFeelsLikeDayTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvFeelsLikeNightTitle"
+                    android:text="@string/evening"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeEveningData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeEveningTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvFeelsLikeEveningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeEveningTitle"
+                    android:text="@{feelsLikeEvening}"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeNightTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/tvFeelsLikeEveningTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/night"/>
+
+                <TextView
+                    android:id="@+id/tvFeelsLikeNightData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeNightTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvFeelsLikeNightTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeNightTitle"
+                    android:text="@{feelsLikeNight}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>

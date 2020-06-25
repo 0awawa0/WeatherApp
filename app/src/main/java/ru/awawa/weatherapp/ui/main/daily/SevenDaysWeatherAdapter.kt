@@ -46,7 +46,8 @@ class SevenDaysWeatherAdapter: RecyclerView.Adapter<SevenDaysWeatherAdapter.Dail
             binding.sunset = timeFormatterSun.format(data.sunset * 1000)
             binding.image = data.weather[0].icon
 
-            binding.temperatureMorning = Helpers.formatDegreesToCelsius(data.temperature.morning)
+            if (data.temperature.morning != 0f)
+                binding.temperatureMorning = Helpers.formatDegreesToCelsius(data.temperature.morning)
             binding.temperatureDay = Helpers.formatDegreesToCelsius(data.temperature.day)
             binding.temperatureEvening = Helpers.formatDegreesToCelsius(data.temperature.evening)
             binding.temperatureNight = Helpers.formatDegreesToCelsius(data.temperature.night)

@@ -16,9 +16,17 @@
     <style name="WeatherInfoTextViewTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="WeatherInfoTextViewTitle.L1">
         <item name="android:padding">5dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="WeatherInfoTextViewTitle.L2">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="WeatherInfoTextViewData">
@@ -27,6 +35,7 @@
         <item name="android:padding">5dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/textColor</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

@@ -8,6 +8,7 @@ import android.widget.ListView
 import android.widget.ProgressBar
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -59,6 +60,8 @@ fun setViewModel(v: SwipeRefreshLayout, viewModel: SevenDaysWeatherViewModel) {
 @BindingAdapter("adapter", "data")
 fun setData(v: RecyclerView, adapter: SevenDaysWeatherAdapter?, data: Array<DailyModel>?) {
     v.layoutManager = LinearLayoutManager(v.context)
+    val divider = DividerItemDecoration(v.context, (v.layoutManager!! as LinearLayoutManager).orientation)
+    v.addItemDecoration(divider)
     v.setHasFixedSize(true)
     v.adapter = adapter
     (v.adapter as SevenDaysWeatherAdapter?)?.data = data
@@ -68,7 +71,7 @@ fun setData(v: RecyclerView, adapter: SevenDaysWeatherAdapter?, data: Array<Dail
 fun setImage(v: ImageView, url: String) {
     Picasso.get()
         .load(url)
-        .resize(100, 100)
+        .resize(200, 200)
         .centerCrop()
         .into(v)
 }
@@ -84,6 +87,8 @@ fun setViewModel(v: SwipeRefreshLayout, viewModel: TwoDaysWeatherViewModel) {
 @BindingAdapter("adapter", "data")
 fun setData(v: RecyclerView, adapter: TwoDaysWeatherAdapter?, data: Array<HourlyModel>?) {
     v.layoutManager = LinearLayoutManager(v.context)
+    val divider = DividerItemDecoration(v.context, (v.layoutManager!! as LinearLayoutManager).orientation)
+    v.addItemDecoration(divider)
     v.setHasFixedSize(true)
     v.adapter = adapter
     (v.adapter as TwoDaysWeatherAdapter?)?.data = data
