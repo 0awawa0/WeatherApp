@@ -69,181 +69,119 @@
 
             <TextView
                 android:id="@+id/tvTemperatureTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/imgIcon"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/temperature" />
 
             <TextView
                 android:id="@+id/tvTemperatureData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvTemperatureTitle"
                 app:layout_constraintRight_toRightOf="@id/tvTemperatureTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text='@{temperature}'/>
 
             <TextView
                 android:id="@+id/tvFeelsLikeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvTemperatureTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/feelsLike" />
 
             <TextView
                 android:id="@+id/tvFeelsLikeData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvFeelsLikeTitle"
                 app:layout_constraintRight_toRightOf="@id/tvFeelsLikeTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{feelsLike}"/>
 
             <TextView
                 android:id="@+id/tvHumidityTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvFeelsLikeTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/humidity" />
 
             <TextView
                 android:id="@+id/tvHumidityData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvHumidityTitle"
                 app:layout_constraintRight_toRightOf="@id/tvHumidityTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvHumidityTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
-                style="@style/RowTextViewContent"
                 android:text="@{humidity}"/>
 
             <TextView
                 android:id="@+id/tvPressureTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvHumidityTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/pressure" />
 
             <TextView
                 android:id="@+id/tvPressureData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvPressureTitle"
                 app:layout_constraintRight_toRightOf="@id/tvPressureTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvPressureTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{pressure}"/>
 
             <TextView
                 android:id="@+id/tvDewPointTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvPressureTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/dewPoint" />
 
             <TextView
                 android:id="@+id/tvDewPointData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvDewPointTitle"
                 app:layout_constraintRight_toRightOf="@id/tvDewPointTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvDewPointTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{dewPoint}"/>
 
             <TextView
                 android:id="@+id/tvCloudsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvDewPointTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/clouds" />
 
             <TextView
                 android:id="@+id/tvCloudsData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvCloudsTitle"
                 app:layout_constraintRight_toRightOf="@id/tvCloudsTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvCloudsTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{clouds}"/>
 
             <TextView
                 android:id="@+id/tvWindSpeedTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvCloudsTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/windSpeed" />
 
             <TextView
                 android:id="@+id/tvWindSpeedData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvWindSpeedTitle"
                 app:layout_constraintRight_toRightOf="@id/tvWindSpeedTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvWindSpeedTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{windSpeed}"/>
 
             <TextView
                 android:id="@+id/tvWindGustTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvWindSpeedTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="12sp"
                 android:text="@string/windGust"/>
 
             <TextView
                 android:id="@+id/tvWindGustData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvWindGustTitle"
                 app:layout_constraintRight_toRightOf="@id/tvWindGustTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvWindGustTitle"
@@ -255,8 +193,7 @@
 
             <TextView
                 android:id="@+id/tvWindDirectionTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewTitle"
                 app:layout_constraintLeft_toRightOf="@id/tvWindGustTitle"
                 app:layout_constraintTop_toTopOf="parent"
                 android:padding="5dp"
@@ -266,14 +203,10 @@
 
             <TextView
                 android:id="@+id/tvWindDirectionData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WeatherInfoTextViewData"
                 app:layout_constraintLeft_toLeftOf="@id/tvWindDirectionTitle"
                 app:layout_constraintRight_toRightOf="@id/tvWindDirectionTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvWindDirectionTitle"
-                android:padding="5dp"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
                 android:text="@{windDirection}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

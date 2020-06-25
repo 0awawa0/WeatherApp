@@ -114,48 +114,32 @@
 
                 <TextView
                     android:id="@+id/tvSunriseTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/WeatherInfoTextViewTitle"
                     app:layout_constraintLeft_toRightOf="@id/imgIcon"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:padding="5dp"
-                    android:textColor="@color/textColor"
-                    android:textSize="12sp"
                     android:text="@string/sunrise"/>
 
                 <TextView
                     android:id="@+id/tvSunriseData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/WeatherInfoTextViewData"
                     app:layout_constraintLeft_toLeftOf="@id/tvSunriseTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvSunriseTitle"
                     app:layout_constraintRight_toRightOf="@id/tvSunriseTitle"
-                    android:padding="5dp"
-                    android:textColor="@color/textColor"
-                    android:textSize="16sp"
                     android:text="@{sunrise}"/>
 
                 <TextView
                     android:id="@+id/tvSunsetTitle"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    style="@style/WeatherInfoTextViewTitle"
                     app:layout_constraintLeft_toRightOf="@id/tvSunriseTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:padding="5dp"
-                    android:textColor="@color/textColor"
-                    android:textSize="12sp"
                     android:text="@string/sunset"/>
 
                 <TextView
                     android:id="@+id/tvSunsetData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/WeatherInfoTextViewData"
                     app:layout_constraintLeft_toLeftOf="@id/tvSunsetTitle"
                     app:layout_constraintRight_toRightOf="@id/tvSunsetTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvSunsetTitle"
-                    android:padding="5dp"
-                    android:textColor="@color/textColor"
-                    android:textSize="16sp"
                     android:text="@{sunset}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

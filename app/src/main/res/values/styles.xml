@@ -13,28 +13,20 @@
         <item name="color">@color/toolbarTitleColor</item>
     </style>
 
-    <style name="RowLinearLayout">
+    <style name="WeatherInfoTextViewTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_centerVertical">true</item>
-    </style>
-
-    <style name="RowTextViewTitle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:padding">5dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
 
-    <style name="RowTextViewContent">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="WeatherInfoTextViewData">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/textColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">5dp</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
 
 </resources>
