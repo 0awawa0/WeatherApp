@@ -53,6 +53,7 @@ class SevenDaysWeatherAdapter: RecyclerView.Adapter<SevenDaysWeatherAdapter.Dail
             binding.temperatureNight = Helpers.formatDegreesToCelsius(data.temperature.night)
             binding.temperatureMin = Helpers.formatDegreesToCelsius(data.temperature.minimal)
             binding.temperatureMax = Helpers.formatDegreesToCelsius(data.temperature.maximal)
+            binding.dewPoint = Helpers.formatDegreesToCelsius(data.dewPoint)
 
             binding.feelsLikeMorning = Helpers.formatDegreesToCelsius(data.feelsLike.morning)
             binding.feelsLikeDay = Helpers.formatDegreesToCelsius(data.feelsLike.day)

@@ -97,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/tvTime"
+            android:overScrollMode="never"
             android:scrollbars="none">
             
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,7 +166,7 @@
                     android:id="@+id/tvTemperatureMaxTitle"
                     style="@style/WeatherInfoTextViewTitle.L1"
                     app:layout_constraintLeft_toRightOf="@id/tvTemperatureMinTitle"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/tvDewPointTitle"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/temperatureMax"/>
 
@@ -176,6 +177,22 @@
                     app:layout_constraintRight_toRightOf="@id/tvTemperatureMaxTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvTemperatureMaxTitle"
                     android:text="@{temperatureMax}"/>
+
+                <TextView
+                    android:id="@+id/tvDewPointTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvTemperatureMaxTitle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/dewPoint"/>
+
+                <TextView
+                    android:id="@+id/tvDewPointData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvDewPointTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvDewPointTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvDewPointTitle"
+                    android:text="@{dewPoint}"/>
 
                 <TextView
                     android:id="@+id/tvTemperatureTitle"
@@ -323,6 +340,62 @@
                     app:layout_constraintRight_toRightOf="@id/tvFeelsLikeNightTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeNightTitle"
                     android:text="@{feelsLikeNight}"/>
+
+                <TextView
+                    android:id="@+id/tvWindTitle"
+                    style="@style/WeatherInfoTextViewTitle.L2"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvFeelsLikeMorningData"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/wind"/>
+
+                <TextView
+                    android:id="@+id/tvWindSpeedTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindTitle"
+                    app:layout_constraintRight_toLeftOf="@id/tvWindGustTitle"
+                    android:text="@string/windSpeed"/>
+
+                <TextView
+                    android:id="@+id/tvWindSpeedData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvWindSpeedTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvWindSpeedTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindSpeedTitle"
+                    android:text="@{windSpeed}"/>
+
+                <TextView
+                    android:id="@+id/tvWindGustTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvWindSpeedTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindTitle"
+                    app:layout_constraintRight_toLeftOf="@+id/tvWindDirectionTitle"
+                    android:text="@string/windGust"/>
+
+                <TextView
+                    android:id="@+id/tvWindGustData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvWindGustTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvWindGustTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindGustTitle"
+                    android:text="@{windGust}"/>
+
+                <TextView
+                    android:id="@+id/tvWindDirectionTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvWindGustTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindTitle"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/windDirection" />
+
+                <TextView
+                    android:id="@+id/tvWindDirectionData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvWindDirectionTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvWindDirectionTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindDirectionTitle"
+                    android:text="@{windDirection}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
