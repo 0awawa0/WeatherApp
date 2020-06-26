@@ -397,6 +397,102 @@
                     app:layout_constraintTop_toBottomOf="@id/tvWindDirectionTitle"
                     android:text="@{windDirection}"/>
 
+                <TextView
+                    android:id="@+id/tvPressureTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindSpeedData"
+                    app:layout_constraintRight_toLeftOf="@id/tvHumidityTitle"
+                    android:text="@string/pressure"/>
+
+                <TextView
+                    android:id="@+id/tvPressureData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvPressureTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvPressureTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvPressureTitle"
+                    android:text="@{pressure}"/>
+
+                <TextView
+                    android:id="@+id/tvHumidityTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvPressureTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindSpeedData"
+                    app:layout_constraintRight_toLeftOf="@id/tvUviTitle"
+                    android:text="@string/humidity"/>
+
+                <TextView
+                    android:id="@+id/tvHumidityData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvHumidityTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvHumidityTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvHumidityTitle"
+                    android:text="@{humidity}"/>
+
+                <TextView
+                    android:id="@+id/tvUviTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvHumidityTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindSpeedData"
+                    app:layout_constraintRight_toLeftOf="@id/tvCloudsTitle"
+                    android:text="@string/uvi"/>
+
+                <TextView
+                    android:id="@+id/tvUviData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvUviTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvUviTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvUviTitle"
+                    android:text="@{uvi}"/>
+
+                <TextView
+                    android:id="@+id/tvCloudsTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvUviTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvWindSpeedData"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/clouds"/>
+
+                <TextView
+                    android:id="@+id/tvCloudsData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvCloudsTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvCloudsTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvCloudsTitle"
+                    android:text="@{clouds}"/>
+
+                <TextView
+                    android:id="@+id/tvRainTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/imgIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvPressureData"
+                    app:layout_constraintRight_toLeftOf="@+id/tvSnowTitle"
+                    android:text="@string/rain"/>
+
+                <TextView
+                    android:id="@+id/tvRainData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvRainTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvRainTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvRainTitle"
+                    android:text="@{rain}"/>
+
+                <TextView
+                    android:id="@+id/tvSnowTitle"
+                    style="@style/WeatherInfoTextViewTitle.L1"
+                    app:layout_constraintLeft_toRightOf="@id/tvRainTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvPressureData"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/snow"/>
+
+                <TextView
+                    android:id="@+id/tvSnowData"
+                    style="@style/WeatherInfoTextViewData"
+                    app:layout_constraintLeft_toLeftOf="@id/tvSnowTitle"
+                    app:layout_constraintRight_toRightOf="@id/tvSnowTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvSnowTitle"
+                    android:text="@{snow}"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
     </RelativeLayout>

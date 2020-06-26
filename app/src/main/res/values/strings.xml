@@ -16,6 +16,9 @@
     <string name="visibility">Visibility, m</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
+    <string name="uvi">UV index</string>
+    <string name="rain">Rain, mm</string>
+    <string name="snow">Snow, mm</string>
 
     <string name="temperatureMin">Min temperature, °C</string>
     <string name="temperatureMax">Max temperature, °C</string>

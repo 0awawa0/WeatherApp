@@ -67,6 +67,8 @@ class SevenDaysWeatherAdapter: RecyclerView.Adapter<SevenDaysWeatherAdapter.Dail
             binding.windGust = data.windGust.toString()
             binding.windDirection = Helpers.degreesToDirection(data.windDirection)
 
+            binding.humidity = data.humidity.toString()
+
             binding.rain = data.rain.toString()
             binding.snow = data.snow.toString()
             binding.uvi = data.uvIndex.toString()
