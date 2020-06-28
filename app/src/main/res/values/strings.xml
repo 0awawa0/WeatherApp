@@ -31,5 +31,6 @@
     <string name="currentWeather">Current weather</string>
     <string name="twoDaysWeather">Two days forecast</string>
     <string name="sevenDaysWeather">Seven days forecast</string>
+    <string name="details">Details</string>
     <string name="search">Search</string>
 </resources>

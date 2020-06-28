@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="ru.awawa.weatherapp.ui.main.daily.details.DetailsViewModel" />
+        <variable
+            name="date"
+            type="String" />
+        <variable
+            name="weatherData"
+            type="ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <TextView
+            android:id="@+id/tvCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="18sp"
+            android:textColor="@color/textColor"
+            android:textAlignment="center"
+            android:text="@{viewModel.weatherRepo.city.name}"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvCityName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="16sp"
+            android:textColor="@color/textColor"
+            android:textAlignment="center"
+            android:text="@{date}"/>
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            app:layout_constraintRight_toRightOf="@id/tvDate"
+            app:layout_constraintLeft_toLeftOf="@id/tvDate"
+            app:url='@{String.format("https://openweathermap.org/img/wn/%s@2x.png", weatherData.weather[0].icon)}'/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

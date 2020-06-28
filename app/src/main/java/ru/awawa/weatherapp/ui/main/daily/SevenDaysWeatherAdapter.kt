@@ -1,9 +1,11 @@
 package ru.awawa.weatherapp.ui.main.daily
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.LayoutDailyRowBinding
@@ -75,10 +77,16 @@ class SevenDaysWeatherAdapter: RecyclerView.Adapter<SevenDaysWeatherAdapter.Dail
 
         }
     }
-
     override fun getItemCount(): Int { return data?.size ?: 0 }
 
     inner class DailyViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
+        init {
+            view.setOnClickListener {
+                val args = Bundle()
+                args.putInt("position", adapterPosition)
+                Navigation.findNavController(view).navigate(R.id.nav_details, args)
+            }
+        }
     }
 }
