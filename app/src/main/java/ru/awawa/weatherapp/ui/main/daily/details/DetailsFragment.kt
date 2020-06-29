@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.FragmentDetailsLayoutBinding
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel
@@ -17,15 +18,16 @@ import java.util.*
 
 class DetailsFragment: Fragment() {
 
-    private val detailsViewModel: DetailsViewModel by viewModel()
-    private lateinit var binding: FragmentDetailsLayoutBinding
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
+
+        val index = arguments?.get("position")!! as Int
+        val detailsViewModel: DetailsViewModel by viewModel { parametersOf(index) }
+
+        val binding: FragmentDetailsLayoutBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_details_layout,
             container,
@@ -34,14 +36,6 @@ class DetailsFragment: Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = detailsViewModel
-        val formatter = SimpleDateFormat("dd.MM", Locale.getDefault())
-        val dailyModel = detailsViewModel
-            .weatherRepo
-            .oneCallModel
-            .value!!
-            .daily[requireArguments()["position"] as Int]
-        binding.weatherData = dailyModel
-        binding.date = formatter.format(dailyModel.time * 1000)
 
         return binding.root
     }

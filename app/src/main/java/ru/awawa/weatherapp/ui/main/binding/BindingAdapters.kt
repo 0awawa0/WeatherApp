@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
+import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.repo.persistence.City
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.HourlyModel

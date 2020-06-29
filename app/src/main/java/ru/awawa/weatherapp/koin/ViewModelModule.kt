@@ -15,5 +15,5 @@ val viewModelModule: Module = module {
     viewModel { SearchViewModel() }
     viewModel { TwoDaysWeatherViewModel() }
     viewModel { SevenDaysWeatherViewModel() }
-    viewModel { DetailsViewModel() }
+    viewModel { (index: Int) -> DetailsViewModel(index) }
 }

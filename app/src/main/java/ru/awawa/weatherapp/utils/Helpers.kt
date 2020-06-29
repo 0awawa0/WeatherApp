@@ -46,7 +46,9 @@ object Helpers: KoinComponent {
         return null
     }
 
-    fun degreesToDirection(degrees: Float): String {
+    fun degreesToDirection(degrees: Float?): String {
+        if (degrees == null) return ""
+
         var currDirection = "N"
         var minDiff = 361f
         for (direction in DIRECTIONS.keys) {
@@ -63,7 +65,7 @@ object Helpers: KoinComponent {
         return String.format("%.2f", degrees - 273)
     }
 
-    fun formatPressureToMmHg(pressure: Float): String {
-        return String.format("%.2f", pressure * 0.750062)
+    fun formatPressureToMmHg(pressure: Float?): String {
+        return String.format("%.2f", pressure?.times(0.750062))
     }
 }

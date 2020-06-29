@@ -4,51 +4,281 @@
         <variable
             name="viewModel"
             type="ru.awawa.weatherapp.ui.main.daily.details.DetailsViewModel" />
-        <variable
-            name="date"
-            type="String" />
-        <variable
-            name="weatherData"
-            type="ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
-
-        <TextView
-            android:id="@+id/tvCityName"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imgIcon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="18sp"
-            android:textColor="@color/textColor"
-            android:textAlignment="center"
-            android:text="@{viewModel.weatherRepo.city.name}"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/background">
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvCityName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="16sp"
-            android:textColor="@color/textColor"
-            android:textAlignment="center"
-            android:text="@{date}"/>
+            <TextView
+                android:id="@+id/tvCityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="18sp"
+                android:textColor="@color/textColor"
+                android:textAlignment="center"
+                android:text="@{viewModel.weatherRepo.city.name}"/>
 
-        <ImageView
-            android:id="@+id/imgIcon"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvDate"
-            app:layout_constraintRight_toRightOf="@id/tvDate"
-            app:layout_constraintLeft_toLeftOf="@id/tvDate"
-            app:url='@{String.format("https://openweathermap.org/img/wn/%s@2x.png", weatherData.weather[0].icon)}'/>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvCityName"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"
+                android:textAlignment="center"
+                android:text="@{viewModel.date}"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"
+                app:layout_constraintRight_toRightOf="@id/tvDate"
+                app:layout_constraintLeft_toLeftOf="@id/tvDate"
+                app:url='@{String.format("https://openweathermap.org/img/wn/%s@2x.png", viewModel.data.weather[0].icon)}'/>
+
+            <TextView
+                android:id="@+id/tvSunrise"
+                style="@style/WeatherInfoTextViewData"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvSunset"
+                app:layout_constraintTop_toBottomOf="@id/imgIcon"
+                android:text='@{String.format("%s\n\n%s", @string/sunrise, viewModel.sunrise)}'/>
+
+            <TextView
+                android:id="@+id/tvSunset"
+                style="@style/WeatherInfoTextViewData"
+                app:layout_constraintLeft_toRightOf="@id/tvSunrise"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgIcon"
+                android:text='@{String.format("%s\n\n%s", @string/sunset, viewModel.sunset)}'/>
+
+            <TextView
+                android:id="@+id/tvTemperatureTitle"
+                style="@style/WeatherInfoTextViewTitle.L2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSunrise"
+                android:layout_marginTop="20dp"
+                android:text="@string/temperature"/>
+
+            <HorizontalScrollView
+                android:id="@+id/hsvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvTemperatureTitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:scrollbars="none">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <TextView
+                        android:id="@+id/tvMorningData"
+                        style="@style/DetailsTemperatureData"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvDayData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:text='@{String.format("%s\n\n%d\nfeels like %d", @string/morning, viewModel.morning, viewModel.feelsLikeMorning)}'/>
+
+
+                    <TextView
+                        android:id="@+id/tvDayData"
+                        style="@style/DetailsTemperatureData"
+                        app:layout_constraintLeft_toRightOf="@id/tvMorningData"
+                        app:layout_constraintRight_toLeftOf="@id/tvEveningData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:text='@{String.format("%s\n\n%d\nfeels like %d", @string/day, viewModel.day, viewModel.feelsLikeDay)}'/>
+
+                    <TextView
+                        android:id="@+id/tvEveningData"
+                        style="@style/DetailsTemperatureData"
+                        app:layout_constraintLeft_toRightOf="@id/tvDayData"
+                        app:layout_constraintRight_toLeftOf="@id/tvNightData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:text='@{String.format("%s\n\n%d\nfeels like %d", @string/evening, viewModel.evening, viewModel.feelsLikeEvening)}'/>
+
+                    <TextView
+                        android:id="@+id/tvNightData"
+                        style="@style/DetailsTemperatureData"
+                        app:layout_constraintLeft_toRightOf="@id/tvEveningData"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:text='@{String.format("%s\n\n%d\nfeels like %d", @string/night, viewModel.night, viewModel.feelsLikeNight)}'/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hsvWind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hsvTemperature"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="30dp"
+                android:scrollbars="none">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvWindSpeedData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvWindGustData"
+                        android:text='@{String.format("%s\n\n%.02f", @string/windSpeed, viewModel.windSpeed)}'/>
+
+                    <TextView
+                        android:id="@+id/tvWindGustData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toRightOf="@id/tvWindSpeedData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvWindDirectionData"
+                        android:text='@{String.format("%s\n\n%.02f", @string/windGust, viewModel.windGust)}'/>
+
+                    <TextView
+                        android:id="@+id/tvWindDirectionData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toRightOf="@id/tvWindGustData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text='@{String.format("%s\n\n%s", @string/windDirection, viewModel.windDirection)}'/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hsvOtherData1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hsvWind"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="30dp"
+                android:scrollbars="none">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvPressureData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvHumidityData"
+                        android:text='@{String.format("%s\n\n%s", @string/pressure, viewModel.pressure)}'/>
+
+                    <TextView
+                        android:id="@+id/tvHumidityData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/tvPressureData"
+                        app:layout_constraintRight_toLeftOf="@id/tvDewPointData"
+                        android:text='@{String.format("%s\n\n%d", @string/humidity, viewModel.humidity)}'/>
+
+                    <TextView
+                        android:id="@+id/tvDewPointData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/tvHumidityData"
+                        app:layout_constraintRight_toLeftOf="@id/tvVisibilityData"
+                        android:text='@{String.format("%s\n\n%.02f", @string/dewPoint, viewModel.dewPoint)}'/>
+
+                    <TextView
+                        android:id="@+id/tvVisibilityData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/tvDewPointData"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text='@{String.format("%s\n\n%d", @string/visibility, viewModel.visibility)}'/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hsvOtherData2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hsvOtherData1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="30dp"
+                android:scrollbars="none">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvCloudsData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvUVIData"
+                        android:text='@{String.format("%s\n\n%d", @string/clouds, viewModel.clouds)}'/>
+
+                    <TextView
+                        android:id="@+id/tvUVIData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/tvCloudsData"
+                        android:text='@{String.format("%s\n\n%d", @string/uvi, viewModel.uvIndex)}'/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/hsvOtherData3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hsvOtherData2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="30dp"
+                android:scrollbars="none">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvRainData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvSnowData"
+                        android:text='@{String.format("%s\n\n%d", @string/rain, viewModel.rain)}'/>
+
+                    <TextView
+                        android:id="@+id/tvSnowData"
+                        style="@style/WeatherInfoTextViewData"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/tvRainData"
+                        android:text='@{String.format("%s\n\n%d", @string/snow, viewModel.snow)}'/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
