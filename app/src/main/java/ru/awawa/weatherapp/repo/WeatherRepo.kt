@@ -24,24 +24,30 @@ class WeatherRepo: KoinComponent {
     private val _oneCallModel: MutableLiveData<OneCallModel> = MutableLiveData()
     val oneCallModel: LiveData<OneCallModel> = _oneCallModel
 
-    val city: MutableLiveData<City> = MutableLiveData()
+    private val _cityName: MutableLiveData<String> = MutableLiveData()
+    val cityName: LiveData<String> = _cityName
+    var city: City? = null
+        set(value) {
+            if (value != null) {
+                _cityName.value = value.name
+                updateOneCallModel(value.lat, value.lon)
+                preferences.currentCity = value.id
+                field = value
+            }
+        }
 
     init {
-        city.observeForever {
-            updateOneCallModel(it.lat, it.lon)
-            preferences.currentCity = it.id
-        }
         GlobalScope.launch (Dispatchers.IO) {
             val city = citiesRepo.getCity(preferences.currentCity)
             launch(Dispatchers.Main) {
-                this@WeatherRepo.city.value = city
+                this@WeatherRepo.city = city
             }
         }
     }
 
     fun updateData() {
-        if (city.value != null) {
-            updateOneCallModel((city.value as City).lat, (city.value as City).lon)
+        if (city != null) {
+            updateOneCallModel((city as City).lat, (city as City).lon)
         }
     }
 

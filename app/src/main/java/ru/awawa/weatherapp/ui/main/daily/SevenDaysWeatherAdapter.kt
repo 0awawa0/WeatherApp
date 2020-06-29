@@ -44,36 +44,13 @@ class SevenDaysWeatherAdapter: RecyclerView.Adapter<SevenDaysWeatherAdapter.Dail
             val data = (this.data as Array<DailyModel>)[position]
             val binding = (holder.view.tag as LayoutDailyRowBinding)
             binding.time = timeFormatterTime.format(data.time * 1000)
-            binding.sunrise = timeFormatterSun.format(data.sunrise * 1000)
-            binding.sunset = timeFormatterSun.format(data.sunset * 1000)
             binding.image = data.weather[0].icon
 
-            if (data.temperature.morning != 0f)
-                binding.temperatureMorning = Helpers.formatDegreesToCelsius(data.temperature.morning)
-            binding.temperatureDay = Helpers.formatDegreesToCelsius(data.temperature.day)
-            binding.temperatureEvening = Helpers.formatDegreesToCelsius(data.temperature.evening)
-            binding.temperatureNight = Helpers.formatDegreesToCelsius(data.temperature.night)
             binding.temperatureMin = Helpers.formatDegreesToCelsius(data.temperature.minimal)
             binding.temperatureMax = Helpers.formatDegreesToCelsius(data.temperature.maximal)
-            binding.dewPoint = Helpers.formatDegreesToCelsius(data.dewPoint)
-
-            binding.feelsLikeMorning = Helpers.formatDegreesToCelsius(data.feelsLike.morning)
-            binding.feelsLikeDay = Helpers.formatDegreesToCelsius(data.feelsLike.day)
-            binding.feelsLikeEvening = Helpers.formatDegreesToCelsius(data.feelsLike.evening)
-            binding.feelsLikeNight = Helpers.formatDegreesToCelsius(data.feelsLike.night)
-
-            binding.pressure = Helpers.formatPressureToMmHg(data.pressure)
-            binding.clouds = data.clouds.toString()
 
             binding.windSpeed = data.windSpeed.toString()
-            binding.windGust = data.windGust.toString()
             binding.windDirection = Helpers.degreesToDirection(data.windDirection)
-
-            binding.humidity = data.humidity.toString()
-
-            binding.rain = data.rain.toString()
-            binding.snow = data.snow.toString()
-            binding.uvi = data.uvIndex.toString()
 
         }
     }

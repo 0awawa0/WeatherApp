@@ -4,8 +4,12 @@
     <string name="search_city">Search city</string>
     <string name="search_hint">Enter city name</string>
 
-    <string name="temperature">Temperature, °C</string>
-    <string name="feelsLike">Feels like, °C</string>
+    <string name="temperature">Temperature</string>
+    <string name="feelsLike">Feels like</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="temperatureDeg">Temperature, °C</string>
+    <string name="feelsLikeDeg">Feels like, °C</string>
     <string name="humidity">Humidity, %</string>
     <string name="pressure">Pressure, mm Hg</string>
     <string name="dewPoint">Dew point, °C</string>

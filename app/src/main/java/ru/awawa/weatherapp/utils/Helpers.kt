@@ -61,8 +61,8 @@ object Helpers: KoinComponent {
         return currDirection
     }
 
-    fun formatDegreesToCelsius(degrees: Float): String {
-        return String.format("%.2f", degrees - 273)
+    fun formatDegreesToCelsius(degrees: Float?): String {
+        return String.format("%.2f", degrees?.minus(273))
     }
 
     fun formatPressureToMmHg(pressure: Float?): String {

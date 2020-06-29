@@ -6,20 +6,20 @@
         <variable
             name="viewModel"
             type="ru.awawa.weatherapp.ui.main.current.CurrentWeatherViewModel" />
-        <variable
-            name="buttonClickListener"
-            type="android.view.View.OnClickListener" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:visibility="@{viewModel.weatherRepo.oneCallModel}"
-            android:layout_centerInParent="true"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:visibility="@{viewModel.weatherRepo.oneCallModel}" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
@@ -32,10 +32,9 @@
                 android:layout_height="wrap_content">
 
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:gravity="center">
 
                     <TextView
@@ -45,19 +44,20 @@
                         android:textAlignment="center"
                         android:paddingVertical="15dp"
                         android:textSize="18sp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
                         android:textColor="@color/textColor"
-                        android:text="@{viewModel.weatherRepo.city.name}"/>
+                        android:text="@{viewModel.weatherRepo.cityName}"/>
 
                     <ImageView
                         android:id="@+id/weatherImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/tvCityName"
-                        android:layout_alignBottom="@id/tvCityName"
-                        android:layout_toRightOf="@id/tvCityName"
-                        app:url='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",viewModel.weatherRepo.oneCallModel.current.weather[0].icon)}'/>
+                        app:layout_constraintTop_toBottomOf="@id/tvCityName"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:url='@{String.format("https://openweathermap.org/img/wn/%s@2x.png",viewModel.currentWeatherModel.current.weather[0].icon)}'/>
 
                     <TextView
                         android:id="@+id/tvCoordinates"
@@ -67,9 +67,10 @@
                         android:padding="5dp"
                         android:textSize="18sp"
                         android:textColor="@color/textColor"
-                        android:layout_below="@id/tvCityName"
-                        android:layout_centerHorizontal="true"
-                        android:text='@{"Latitude: " + Float.toString(viewModel.weatherRepo.city.lat) + " Longitude: " + Float.toString(viewModel.weatherRepo.city.lon)}' />
+                        app:layout_constraintTop_toBottomOf="@id/weatherImage"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text='@{String.format("%s: %.03f    %s: %.03f", @string/latitude, viewModel.weatherRepo.city.lat, @string/longitude, viewModel.weatherRepo.city.lon)}' />
 
                     <TextView
                         android:id="@+id/tvTemperature"
@@ -79,9 +80,10 @@
                         android:padding="5dp"
                         android:textSize="18sp"
                         android:textColor="@color/textColor"
-                        android:layout_below="@id/tvCoordinates"
-                        android:layout_centerHorizontal="true"
-                        android:text='@{String.format("Temperature: %.2f°C", viewModel.weatherRepo.oneCallModel.current.temperature - 273)}'/>
+                        app:layout_constraintTop_toBottomOf="@id/tvCoordinates"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text='@{String.format("%s: %s", @string/temperature, viewModel.temperature)}'/>
 
                     <TextView
                         android:id="@+id/tvFeelsLike"
@@ -91,14 +93,15 @@
                         android:textAlignment="center"
                         android:textSize="18sp"
                         android:textColor="@color/textColor"
-                        android:layout_below="@id/tvTemperature"
-                        android:layout_centerHorizontal="true"
-                        android:text='@{String.format("Feels like: %.2f°C", viewModel.weatherRepo.oneCallModel.current.feelsLike - 273)}'/>
+                        app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text='@{String.format("%s %s", @string/feelsLike, viewModel.feelsLike)}'/>
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </ScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

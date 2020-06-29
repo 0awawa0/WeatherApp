@@ -74,7 +74,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/tvTemperatureData"
                 app:layout_constraintRight_toLeftOf="@id/tvFeelsLikeTitle"
-                android:text="@string/temperature" />
+                android:text="@string/temperatureDeg" />
 
             <TextView
                 android:id="@+id/tvTemperatureData"
@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/tvHumidityTitle"
                 app:layout_constraintBottom_toTopOf="@id/tvFeelsLikeData"
-                android:text="@string/feelsLike" />
+                android:text="@string/feelsLikeDeg" />
 
             <TextView
                 android:id="@+id/tvFeelsLikeData"

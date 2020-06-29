@@ -9,70 +9,16 @@
             name="image"
             type="String" />
         <variable
-            name="sunrise"
-            type="String" />
-        <variable
-            name="sunset"
-            type="String" />
-        <variable
-            name="temperatureMorning"
-            type="String" />
-        <variable
-            name="temperatureDay"
-            type="String" />
-        <variable
-            name="temperatureEvening"
-            type="String" />
-        <variable
-            name="temperatureNight"
-            type="String" />
-        <variable
             name="temperatureMin"
             type="String"/>
         <variable
             name="temperatureMax"
             type="String" />
         <variable
-            name="feelsLikeMorning"
-            type="String" />
-        <variable
-            name="feelsLikeDay"
-            type="String"/>
-        <variable
-            name="feelsLikeEvening"
-            type="String" />
-        <variable
-            name="feelsLikeNight"
-            type="String" />
-        <variable
-            name="pressure"
-            type="String" />
-        <variable
-            name="humidity"
-            type="String" />
-        <variable
-            name="dewPoint"
-            type="String" />
-        <variable
             name="windSpeed"
             type="String" />
         <variable
-            name="windGust"
-            type="String" />
-        <variable
             name="windDirection"
-            type="String" />
-        <variable
-            name="clouds"
-            type="String" />
-        <variable
-            name="uvi"
-            type="String" />
-        <variable
-            name="rain"
-            type="String"/>
-        <variable
-            name="snow"
             type="String" />
     </data>
     <RelativeLayout

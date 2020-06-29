@@ -26,7 +26,7 @@ class SearchFragment: Fragment() {
                 if (activity != null) {
                     val city = DataBindingUtil.bind<LayoutCityRowBinding>(it)?.city
                     if (city != null) {
-                        searchViewModel.weatherRepo.city.value = city
+                        searchViewModel.weatherRepo.city = city
                         Navigation.findNavController(binding.root).navigate(R.id.nav_currentWeather)
                     }
                 }
