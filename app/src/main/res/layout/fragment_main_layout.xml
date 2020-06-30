@@ -48,7 +48,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         android:textColor="@color/textColor"
-                        android:text="@{viewModel.weatherRepo.cityName}"/>
+                        android:text="@{viewModel.cityName}"/>
 
                     <ImageView
                         android:id="@+id/weatherImage"
@@ -70,7 +70,7 @@
                         app:layout_constraintTop_toBottomOf="@id/weatherImage"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:text='@{String.format("%s: %.03f    %s: %.03f", @string/latitude, viewModel.weatherRepo.city.lat, @string/longitude, viewModel.weatherRepo.city.lon)}' />
+                        android:text='@{String.format("%s: %.03f    %s: %.03f", @string/latitude, viewModel.latitude, @string/longitude, viewModel.longitude)}' />
 
                     <TextView
                         android:id="@+id/tvTemperature"

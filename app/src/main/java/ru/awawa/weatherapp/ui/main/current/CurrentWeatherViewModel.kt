@@ -1,5 +1,6 @@
 package ru.awawa.weatherapp.ui.main.current
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import org.koin.core.KoinComponent
@@ -14,34 +15,39 @@ class CurrentWeatherViewModel: ViewModel(), KoinComponent {
 
     val currentWeatherModel = weatherRepo.oneCallModel
     val cityName = weatherRepo.cityName
+    val latitude: MutableLiveData<Float> = MutableLiveData()
+    val longitude: MutableLiveData<Float> = MutableLiveData()
 
-    var temperature = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.temperature)
-    var feelsLike = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.feelsLike)
+    val temperature: MutableLiveData<String> = MutableLiveData()
+    val feelsLike: MutableLiveData<String> = MutableLiveData()
 
-    var pressure = Helpers.formatPressureToMmHg(currentWeatherModel.value?.current?.pressure)
-    var dewPoint = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.dewPoint)
-    var humidity = currentWeatherModel.value?.current?.humidity?.toInt()
+    val pressure: MutableLiveData<String> = MutableLiveData()
 
-    var clouds = currentWeatherModel.value?.current?.clouds
-    var uvIndex = currentWeatherModel.value?.current?.uvIndex
+    val dewPoint: MutableLiveData<String> = MutableLiveData()
+    val humidity: MutableLiveData<Int> = MutableLiveData()
 
-    var visibility = currentWeatherModel.value?.current?.visibility
+    var clouds: MutableLiveData<Int> = MutableLiveData()
+    var uvIndex: MutableLiveData<Float> = MutableLiveData()
 
-    var windSpeed = currentWeatherModel.value?.current?.windSpeed
-    var windGust = currentWeatherModel.value?.current?.windGust
-    var windDirection = Helpers.degreesToDirection(currentWeatherModel.value?.current?.windDirection)
+    var visibility: MutableLiveData<Int> = MutableLiveData()
+
+    var windSpeed: MutableLiveData<Float> = MutableLiveData()
+    var windGust: MutableLiveData<Float> = MutableLiveData()
+    var windDirection: MutableLiveData<String> = MutableLiveData()
 
     private val observer = Observer<OneCallModel> {
-        temperature = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.temperature)
-        feelsLike = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.feelsLike)
-        dewPoint = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.dewPoint)
-        humidity = currentWeatherModel.value?.current?.humidity?.toInt()
-        clouds = currentWeatherModel.value?.current?.clouds
-        uvIndex = currentWeatherModel.value?.current?.uvIndex
-        visibility = currentWeatherModel.value?.current?.visibility
-        windSpeed = currentWeatherModel.value?.current?.windSpeed
-        windGust = currentWeatherModel.value?.current?.windGust
-        windDirection = Helpers.degreesToDirection(currentWeatherModel.value?.current?.windDirection)
+        latitude.value = weatherRepo.city?.lat
+        longitude.value = weatherRepo.city?.lon
+        temperature.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.temperature)
+        feelsLike.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.feelsLike)
+        dewPoint.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.dewPoint)
+        humidity.value = currentWeatherModel.value?.current?.humidity?.toInt()
+        clouds.value = currentWeatherModel.value?.current?.clouds
+        uvIndex.value = currentWeatherModel.value?.current?.uvIndex
+        visibility.value = currentWeatherModel.value?.current?.visibility
+        windSpeed.value = currentWeatherModel.value?.current?.windSpeed
+        windGust.value = currentWeatherModel.value?.current?.windGust
+        windDirection.value = Helpers.degreesToDirection(currentWeatherModel.value?.current?.windDirection)
     }
 
     init {
