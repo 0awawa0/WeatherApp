@@ -111,6 +111,54 @@
                         app:layout_constraintTop_toBottomOf="@id/tvFeelsLike"
                         android:text='@{String.format("%s\n%s", @string/dewPoint, viewModel.dewPoint)}'/>
 
+                    <TextView
+                        android:id="@+id/tvClouds"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvUVI"
+                        app:layout_constraintTop_toBottomOf="@id/tvDewPoint"
+                        android:text='@{String.format("%s\n%3d", @string/clouds, viewModel.clouds)}'/>
+
+                    <TextView
+                        android:id="@+id/tvUVI"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toRightOf="@id/tvClouds"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDewPoint"
+                        android:text='@{String.format("%s\n%.02f", @string/uvi, viewModel.uvIndex)}'/>
+
+                    <TextView
+                        android:id="@+id/tvVisibility"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvUVI"
+                        android:text='@{String.format("%s\n%3d", @string/visibility, viewModel.visibility)}'/>
+
+                    <TextView
+                        android:id="@+id/tvWindSpeed"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvWindGust"
+                        app:layout_constraintTop_toBottomOf="@id/tvVisibility"
+                        android:text='@{String.format("%s\n%.02f", @string/windSpeed, viewModel.windSpeed)}'/>
+
+                    <TextView
+                        android:id="@+id/tvWindGust"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toRightOf="@id/tvWindSpeed"
+                        app:layout_constraintRight_toLeftOf="@id/tvWindDirection"
+                        app:layout_constraintTop_toBottomOf="@id/tvVisibility"
+                        android:text='@{String.format("%s\n%.02f", @string/windGust, viewModel.windGust)}'/>
+
+                    <TextView
+                        android:id="@+id/tvWindDirection"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toRightOf="@id/tvWindGust"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvVisibility"
+                        android:text='@{String.format("%s\n%s", @string/windDirection, viewModel.windDirection)}'/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </ScrollView>
