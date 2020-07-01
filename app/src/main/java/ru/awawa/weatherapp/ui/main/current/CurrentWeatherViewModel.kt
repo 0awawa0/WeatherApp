@@ -26,20 +26,21 @@ class CurrentWeatherViewModel: ViewModel(), KoinComponent {
     val dewPoint: MutableLiveData<String> = MutableLiveData()
     val humidity: MutableLiveData<Int> = MutableLiveData()
 
-    var clouds: MutableLiveData<Int> = MutableLiveData()
-    var uvIndex: MutableLiveData<Float> = MutableLiveData()
+    val clouds: MutableLiveData<Int> = MutableLiveData()
+    val uvIndex: MutableLiveData<Float> = MutableLiveData()
 
-    var visibility: MutableLiveData<Int> = MutableLiveData()
+    val visibility: MutableLiveData<Int> = MutableLiveData()
 
-    var windSpeed: MutableLiveData<Float> = MutableLiveData()
-    var windGust: MutableLiveData<Float> = MutableLiveData()
-    var windDirection: MutableLiveData<String> = MutableLiveData()
+    val windSpeed: MutableLiveData<Float> = MutableLiveData()
+    val windGust: MutableLiveData<Float> = MutableLiveData()
+    val windDirection: MutableLiveData<String> = MutableLiveData()
 
     private val observer = Observer<OneCallModel> {
         latitude.value = weatherRepo.city?.lat
         longitude.value = weatherRepo.city?.lon
         temperature.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.temperature)
         feelsLike.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.feelsLike)
+        pressure.value = Helpers.formatPressureToMmHg(currentWeatherModel.value?.current?.pressure)
         dewPoint.value = Helpers.formatDegreesToCelsius(currentWeatherModel.value?.current?.dewPoint)
         humidity.value = currentWeatherModel.value?.current?.humidity?.toInt()
         clouds.value = currentWeatherModel.value?.current?.clouds

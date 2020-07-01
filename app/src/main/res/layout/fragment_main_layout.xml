@@ -61,11 +61,7 @@
 
                     <TextView
                         android:id="@+id/tvCoordinates"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:padding="5dp"
-                        android:textSize="18sp"
+                        style="@style/WeatherInfoTextViewData.L2"
                         android:textColor="@color/textColor"
                         app:layout_constraintTop_toBottomOf="@id/weatherImage"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -74,29 +70,46 @@
 
                     <TextView
                         android:id="@+id/tvTemperature"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:padding="5dp"
-                        android:textSize="18sp"
+                        style="@style/WeatherInfoTextViewData.L1"
                         android:textColor="@color/textColor"
                         app:layout_constraintTop_toBottomOf="@id/tvCoordinates"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        android:text='@{String.format("%s: %s", @string/temperature, viewModel.temperature)}'/>
+                        app:layout_constraintRight_toLeftOf="@id/tvFeelsLike"
+                        android:layout_marginTop="30dp"
+                        android:text='@{String.format("%s\n%s", @string/temperature, viewModel.temperature)}'/>
 
                     <TextView
                         android:id="@+id/tvFeelsLike"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:textColor="@color/textColor"
-                        app:layout_constraintTop_toBottomOf="@id/tvTemperature"
-                        app:layout_constraintLeft_toLeftOf="parent"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintTop_toBottomOf="@id/tvCoordinates"
+                        app:layout_constraintLeft_toRightOf="@id/tvTemperature"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:text='@{String.format("%s %s", @string/feelsLike, viewModel.feelsLike)}'/>
+                        android:layout_marginTop="30dp"
+                        android:text='@{String.format("%s\n%s", @string/feelsLike, viewModel.feelsLike)}'/>
+
+                    <TextView
+                        android:id="@+id/tvPressure"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvHumidity"
+                        app:layout_constraintTop_toBottomOf="@id/tvFeelsLike"
+                        android:text='@{String.format("%s\n%s", @string/pressure, viewModel.pressure)}'/>
+
+                    <TextView
+                        android:id="@+id/tvHumidity"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toRightOf="@id/tvPressure"
+                        app:layout_constraintRight_toLeftOf="@id/tvDewPoint"
+                        app:layout_constraintTop_toBottomOf="@id/tvFeelsLike"
+                        android:text='@{String.format("%s\n%3d", @string/humidity, viewModel.humidity)}'/>
+
+                    <TextView
+                        android:id="@+id/tvDewPoint"
+                        style="@style/WeatherInfoTextViewData.L1"
+                        app:layout_constraintLeft_toRightOf="@id/tvHumidity"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFeelsLike"
+                        android:text='@{String.format("%s\n%s", @string/dewPoint, viewModel.dewPoint)}'/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -72,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/tvTemperatureMinData"
-                    style="@style/WeatherInfoTextViewData"
+                    style="@style/WeatherInfoTextViewData.L1"
                     app:layout_constraintLeft_toLeftOf="@id/tvTemperatureMinTitle"
                     app:layout_constraintRight_toRightOf="@id/tvTemperatureMinTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvTemperatureMinTitle"
@@ -90,7 +90,7 @@
 
                 <TextView
                     android:id="@+id/tvTemperatureMaxData"
-                    style="@style/WeatherInfoTextViewData"
+                    style="@style/WeatherInfoTextViewData.L1"
                     app:layout_constraintLeft_toLeftOf="@id/tvTemperatureMaxTitle"
                     app:layout_constraintRight_toRightOf="@id/tvTemperatureMaxTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvTemperatureMaxTitle"
@@ -108,7 +108,7 @@
 
                 <TextView
                     android:id="@+id/tvWindSpeedData"
-                    style="@style/WeatherInfoTextViewData"
+                    style="@style/WeatherInfoTextViewData.L1"
                     app:layout_constraintLeft_toLeftOf="@id/tvWindSpeedTitle"
                     app:layout_constraintRight_toRightOf="@id/tvWindSpeedTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvWindSpeedTitle"
@@ -126,7 +126,7 @@
 
                 <TextView
                     android:id="@+id/tvWindDirectionData"
-                    style="@style/WeatherInfoTextViewData"
+                    style="@style/WeatherInfoTextViewData.L1"
                     app:layout_constraintLeft_toLeftOf="@id/tvWindDirectionTitle"
                     app:layout_constraintRight_toRightOf="@id/tvWindDirectionTitle"
                     app:layout_constraintTop_toBottomOf="@id/tvWindDirectionTitle"
