@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import ru.awawa.weatherapp.R
+import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.persistence.City
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.HourlyModel
@@ -27,13 +28,13 @@ import ru.awawa.weatherapp.ui.main.search.SearchAdapter
 
 
 @BindingAdapter("visibility")
-fun setVisibility(v: ProgressBar, weatherModel: OneCallModel?) {
-    v.visibility = if (weatherModel == null) View.VISIBLE else View.GONE
+fun setVisibility(v: ProgressBar, result: WeatherRepo.OperationResult?) {
+    v.visibility = if (result?.type != WeatherRepo.ResultType.LOADING) View.GONE else View.VISIBLE
 }
 
 @BindingAdapter("visibility")
-fun setVisibility(v: SwipeRefreshLayout, weatherModel: OneCallModel?) {
-    v.visibility = if (weatherModel == null) View.GONE else View.VISIBLE
+fun setVisibility(v: SwipeRefreshLayout, result: WeatherRepo.OperationResult?) {
+    v.visibility = if (result?.type != WeatherRepo.ResultType.LOADING) View.VISIBLE else View.GONE
     v.isRefreshing = false
 }
 
