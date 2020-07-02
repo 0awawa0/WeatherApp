@@ -2,16 +2,16 @@ package ru.awawa.weatherapp.ui.main.binding
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.ProgressBar
+import android.widget.*
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.persistence.City
@@ -26,13 +26,48 @@ import ru.awawa.weatherapp.ui.main.search.SearchAdapter
 
 @BindingAdapter("visibility")
 fun setVisibility(v: ProgressBar, result: WeatherRepo.OperationResult?) {
-    v.visibility = if (result?.type != WeatherRepo.ResultType.LOADING) View.GONE else View.VISIBLE
+    v.visibility = if (result?.type == WeatherRepo.ResultType.LOADING)
+        View.VISIBLE
+    else
+        View.GONE
 }
 
 @BindingAdapter("visibility")
 fun setVisibility(v: SwipeRefreshLayout, result: WeatherRepo.OperationResult?) {
-    v.visibility = if (result?.type != WeatherRepo.ResultType.LOADING) View.VISIBLE else View.GONE
+
+    v.visibility = if (result?.type != WeatherRepo.ResultType.LOADING)
+        View.VISIBLE
+    else
+        View.GONE
     v.isRefreshing = false
+}
+
+@BindingAdapter("visibility", "weatherRepo")
+fun setVisibility(v: TextView, result: WeatherRepo.OperationResult?, weatherRepo: WeatherRepo?) {
+
+
+    if (result?.type == WeatherRepo.ResultType.ERROR
+        && weatherRepo?.oneCallModel?.value?.current == null
+    ) {
+        v.visibility = View.VISIBLE
+        v.text = result.message
+    } else {
+        v.visibility = View.GONE
+        if (result?.type == WeatherRepo.ResultType.ERROR) {
+            Snackbar.make(v, result.message, Snackbar.LENGTH_SHORT).show()
+        }
+    }
+}
+
+@BindingAdapter("visibility", "weatherRepo")
+fun setVisibility(v: ScrollView, result: WeatherRepo.OperationResult?, weatherRepo: WeatherRepo?) {
+
+    v.visibility = if (result?.type != WeatherRepo.ResultType.SUCCESS
+        && weatherRepo?.oneCallModel?.value?.current == null
+    )
+        View.GONE
+    else
+        View.VISIBLE
 }
 
 @BindingAdapter("url")
@@ -44,7 +79,7 @@ fun setUrl(v: ImageView, url: String) {
 fun setViewModel(v: SwipeRefreshLayout, viewModel: CurrentWeatherViewModel) {
     v.setOnRefreshListener {
         viewModel.weatherRepo.updateData()
-        Handler(Looper.getMainLooper()).postDelayed({ v.isRefreshing = false }, 5000)
+        Handler(Looper.getMainLooper()).postDelayed({ v.isRefreshing = false }, 25000)
     }
 }
 
