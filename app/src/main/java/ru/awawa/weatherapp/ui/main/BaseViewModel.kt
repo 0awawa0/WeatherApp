@@ -1,12 +1,10 @@
-package ru.awawa.weatherapp.ui.main.hourly
+package ru.awawa.weatherapp.ui.main
 
 import androidx.lifecycle.ViewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ru.awawa.weatherapp.repo.WeatherRepo
 
-
-class TwoDaysWeatherViewModel: ViewModel(), KoinComponent {
-
+open class BaseViewModel: ViewModel(), KoinComponent {
     val weatherRepo: WeatherRepo by inject()
 }

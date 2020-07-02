@@ -13,17 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
-import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.persistence.City
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.DailyModel
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.HourlyModel
-import ru.awawa.weatherapp.repo.retrofit.models.onecall.OneCallModel
+import ru.awawa.weatherapp.ui.main.BaseViewModel
 import ru.awawa.weatherapp.ui.main.current.CurrentWeatherViewModel
 import ru.awawa.weatherapp.ui.main.daily.SevenDaysWeatherAdapter
-import ru.awawa.weatherapp.ui.main.daily.SevenDaysWeatherViewModel
 import ru.awawa.weatherapp.ui.main.hourly.TwoDaysWeatherAdapter
-import ru.awawa.weatherapp.ui.main.hourly.TwoDaysWeatherViewModel
 import ru.awawa.weatherapp.ui.main.search.SearchAdapter
 
 
@@ -51,14 +48,6 @@ fun setViewModel(v: SwipeRefreshLayout, viewModel: CurrentWeatherViewModel) {
     }
 }
 
-@BindingAdapter("viewModel")
-fun setViewModel(v: SwipeRefreshLayout, viewModel: SevenDaysWeatherViewModel) {
-    v.setOnRefreshListener {
-        viewModel.weatherRepo.updateData()
-        Handler(Looper.getMainLooper()).postDelayed({ v.isRefreshing = false }, 5000)
-    }
-}
-
 @BindingAdapter("adapter", "data")
 fun setData(v: RecyclerView, adapter: SevenDaysWeatherAdapter?, data: Array<DailyModel>?) {
     v.layoutManager = LinearLayoutManager(v.context)
@@ -79,7 +68,7 @@ fun setImage(v: ImageView, url: String) {
 }
 
 @BindingAdapter("viewModel")
-fun setViewModel(v: SwipeRefreshLayout, viewModel: TwoDaysWeatherViewModel) {
+fun setViewModel(v: SwipeRefreshLayout, viewModel: BaseViewModel) {
     v.setOnRefreshListener {
         viewModel.weatherRepo.updateData()
         Handler(Looper.getMainLooper()).postDelayed({ v.isRefreshing = false }, 5000)

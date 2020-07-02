@@ -4,14 +4,14 @@ import androidx.lifecycle.ViewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ru.awawa.weatherapp.repo.WeatherRepo
+import ru.awawa.weatherapp.ui.main.BaseViewModel
 import ru.awawa.weatherapp.utils.Helpers
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class DetailsViewModel(index: Int): ViewModel(), KoinComponent {
+class DetailsViewModel(index: Int): BaseViewModel() {
 
-    val weatherRepo: WeatherRepo by inject()
     val data = weatherRepo.oneCallModel.value?.daily?.get(index)
     val date: String = SimpleDateFormat("dd.MM", Locale.getDefault())
         .format(data?.time?.times(1000))

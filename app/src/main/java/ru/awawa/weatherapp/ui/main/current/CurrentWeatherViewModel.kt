@@ -2,16 +2,11 @@ package ru.awawa.weatherapp.ui.main.current
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import org.koin.core.KoinComponent
-import org.koin.core.inject
-import ru.awawa.weatherapp.repo.WeatherRepo
 import ru.awawa.weatherapp.repo.retrofit.models.onecall.OneCallModel
+import ru.awawa.weatherapp.ui.main.BaseViewModel
 import ru.awawa.weatherapp.utils.Helpers
 
-class CurrentWeatherViewModel: ViewModel(), KoinComponent {
-
-    val weatherRepo: WeatherRepo by inject()
+class CurrentWeatherViewModel: BaseViewModel() {
 
     val currentWeatherModel = weatherRepo.oneCallModel
     val cityName = weatherRepo.cityName

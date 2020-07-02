@@ -9,11 +9,12 @@ import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.awawa.weatherapp.R
 import ru.awawa.weatherapp.databinding.FragmentSevenDaysLayoutBinding
+import ru.awawa.weatherapp.ui.main.BaseViewModel
 
 
 class SevenDaysWeatherFragment: Fragment() {
 
-    private val sevenDaysViewModel: SevenDaysWeatherViewModel by viewModel()
+    private val sevenDaysViewModel: BaseViewModel by viewModel()
     private lateinit var binding: FragmentSevenDaysLayoutBinding
 
     override fun onCreateView(

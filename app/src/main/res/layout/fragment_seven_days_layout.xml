@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ru.awawa.weatherapp.ui.main.daily.SevenDaysWeatherViewModel" />
+            type="ru.awawa.weatherapp.ui.main.BaseViewModel" />
         <variable
             name="adapter"
             type="ru.awawa.weatherapp.ui.main.daily.SevenDaysWeatherAdapter" />
